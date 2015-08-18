@@ -1,9 +1,4 @@
-package { 'openssh':
-	ensure => present,
-}
+class ssh (
+	$server_options = hiera('ssh::server_options'),
+)
 
-service { 'sshd':
-	ensure => running,
-	enable => true,
-	require => Package['openssh'],
-}
