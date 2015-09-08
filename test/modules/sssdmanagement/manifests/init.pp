@@ -1,10 +1,11 @@
-class sssdmanagement {'::sssd':
+class sssdmanagement {
+  class { '::sssd':
   config => {
     'sssd' => {
       'domains'             => 'epochcapital.com.au',
       'config_file_version' => 2,
       'services'            => ['nss', 'pam'],
-    }
+    },
     'domain/epochcapital.com.au' => {
       'ad_domain'                      => 'epochcapital.com.au',
       'ad_server'                      => ['10.10.10.14'],
@@ -17,4 +18,5 @@ class sssdmanagement {'::sssd':
       'simple_allow_groups'            => ['admins', 'users'],
     }
   }
+}
 }
