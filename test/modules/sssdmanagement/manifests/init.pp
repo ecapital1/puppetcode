@@ -1,4 +1,4 @@
-class {'::sssd':
+class sssd {'::sssd':
   config => {
     'sssd' => {
       'domains'             => 'epochcapital.com.au',
