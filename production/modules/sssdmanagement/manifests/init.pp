@@ -1,4 +1,0 @@
-class sssdmanagement {
-  class {'::sssd':
-	}
-}
