@@ -1,0 +1,3 @@
+mod "base",
+	:git => 'git://github.com:ecapital1/puppetcode.git'
+
