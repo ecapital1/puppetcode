@@ -1,6 +1,8 @@
 class base::packages {
-  $packages = heira_array('packages'),
-  package { '$packages':
-    ensure => installed,
+  $packages = hiera("packages")
+  $packages.each |String $packages|{
+  	package { "$packages":
+    	ensure => installed,
+  	}
   }
 }
