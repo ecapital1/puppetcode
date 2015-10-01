@@ -1,3 +1,4 @@
+[SUSE_Linux_Enterprise_Server_11_SP3.repo]
 name=SUSE Linux Enterprise Server 11 SP3
 enabled=1
 autorefresh=1
