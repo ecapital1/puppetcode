@@ -5,7 +5,7 @@ class base::packages {
   $sourcefile = [ "sles11sp3dvd1","sles11sp3dvd2"]
   $repofiles.each |String $repofiles|{
   file { $repofiles:
-    ensure => "present",
+    ensure => "file",
     owner => "root",
     group => "root",
     mode => 0644,
