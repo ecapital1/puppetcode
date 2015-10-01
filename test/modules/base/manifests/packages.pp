@@ -9,7 +9,7 @@ class base::packages {
     owner => "root",
     group => "root",
     mode => 0644,
-    source => "$sourcedir/$sourcefile"
+    source => $sourcefile.each |String $sourcefile| {"$sourcedir/$sourcefile"}
   }
 }
   $packages = hiera("packages")
