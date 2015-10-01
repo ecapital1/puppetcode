@@ -12,6 +12,7 @@ class base::packages {
         mode => '0644',
         source => "$sourcedir/$sourcefile"
     #$sourcefile.each |String $sourcefile| {"$sourcedir/$sourcefile"}
+      }
     }
   }
   $packages = hiera("packages")
