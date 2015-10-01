@@ -9,7 +9,7 @@ class base::packages {
     owner => "root",
     group => "root",
     mode => '0644',
-    source => '$sourcedir/sles11sp3dvd1'
+    source => "$sourcedir/sles11sp3dvd1"
     #$sourcefile.each |String $sourcefile| {"$sourcedir/$sourcefile"}
   }
 }
