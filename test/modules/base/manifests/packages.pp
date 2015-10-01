@@ -4,15 +4,16 @@ class base::packages {
   $sourcedir = "puppet:///modules/base/sles/11sp3"
   $sourcefile = [ "sles11sp3dvd1","sles11sp3dvd2"]
   $repofiles.each |String $repofiles|{
-  file { $repofiles:
-    ensure => "file",
-    owner => "root",
-    group => "root",
-    mode => '0644',
-    source => "$sourcedir/sles11sp3dvd1"
+    $sourcefile.each |String $sourcefile| {
+      file { $repofiles:
+        ensure => "file",
+        owner => "root",
+        group => "root",
+        mode => '0644',
+        source => "$sourcedir/$sourcefile"
     #$sourcefile.each |String $sourcefile| {"$sourcedir/$sourcefile"}
+    }
   }
-}
   $packages = hiera("packages")
   $packages.each |String $packages|{
   	package { "$packages":
