@@ -30,7 +30,7 @@ class base::repos {
 						type						=> yast2,
 						keeppackages		=> 0,
 					}
-					zypprepo { 'SLES11SP3DVD2':
+					zypprepo { 'SLES11SP3SDKDVD2':
     				baseurl         => 'ftp://10.10.10.81/SLE-11-SP3-SDK/DVD2',
     				enabled         => 1,
     				autorefresh     => 1,
@@ -39,7 +39,7 @@ class base::repos {
     				type            => yast2,
     				keeppackages    => 0,
 					}
-					zypprepo { 'SLE11SP3SDKDVD1':
+					zypprepo { 'SLE11SP3RTDVD1':
 						baseurl					=> 'ftp://10.10.10.81/SLE-11-RT-SP3/DVD1',
 						enabled					=> 1,
 						autorefresh			=> 1,
@@ -48,7 +48,7 @@ class base::repos {
 						type						=> yast2,
 						keeppackages		=> 0,
 					}
-					zypprepo { 'SLES11SP3DVD2':
+					zypprepo { 'SLES11SP3RTDVD2':
     				baseurl         => 'ftp://10.10.10.81/SLE-11-RT-SP3/DVD2',
     				enabled         => 1,
     				autorefresh     => 1,
