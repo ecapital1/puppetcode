@@ -57,22 +57,13 @@ class base::repos {
     				type            => yast2,
     				keeppackages    => 0,
 					}
-					zypprepo { 'dell-omsa-hwindep':
-						baseurl					=> 'http://linux.dell.com/repo/hardware/latest/mirrors.cgi/osname=sles11&basearch=x86_64&native=1&redirpath=/',
-						enabled					=> 1,
-						autorefresh			=> 1,
-						name						=> 'dell-omsa-hwindep',
-						path						=> '/',
-						type						=> rpm-md,
-						keeppackages		=> 0,
-					}
-					zypprepo { 'dell-omsa-hw':
-    				baseurl         => 'http://linux.dell.com/repo/hardware/latest/mirrors.cgi/osname=sles11&basearch=x86_64&native=1&sys_ven_id=0x1028&sys_dev_id=0x04ce&dellsysidpluginver=$dellsysidpluginver&redirpath=/',
+					zypprepo { 'OPENSUSE':
+    				baseurl         => 'http://download.opensuse.org/distribution/12.3/repo/oss/',
     				enabled         => 1,
     				autorefresh     => 1,
-    				name            => 'dell-omsa-hw',
+    				name            => 'OPENSUSE',
     				path            => '/',
-    				type            => rpm-md,
+    				type            => yast2,
     				keeppackages    => 0,
 					}
 				}
