@@ -58,7 +58,7 @@ class base::repos {
     				keeppackages    => 0,
 					}
 					zypprepo { 'OPENSUSE':
-    				baseurl         => 'http://download.opensuse.org/distribution/12.3/repo/oss/',
+    				baseurl         => 'http://download.opensuse.org/distribution/13.2/repo/oss/',
     				enabled         => 1,
     				autorefresh     => 1,
     				name            => 'OPENSUSE',
