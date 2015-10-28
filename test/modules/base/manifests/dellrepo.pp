@@ -4,7 +4,7 @@ class base::dellrepo {
       path    => "/usr/bin/",
   }
   exec { "dell_repo_install":
-      command => "/bin/bash /root/bootstrap.cgi",
-      path    => "/usr/bin/"
+      command => "bash /root/bootstrap.cgi",
+      path    => "/bin/"
     }
 }
