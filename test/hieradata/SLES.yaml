@@ -1,0 +1,4 @@
+packages:
+	- 'openssh'
+	- 'openssh-askpass'
+	- 'srvadmin-all'
