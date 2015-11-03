@@ -39,24 +39,6 @@ class base::repos {
     				type            => yast2,
     				keeppackages    => 0,
 					}
-					zypprepo { 'SLE11SP3RTDVD1':
-						baseurl					=> 'ftp://10.10.10.81/SLE-11-RT-SP3/DVD1',
-						enabled					=> 1,
-						autorefresh			=> 1,
-						name						=> 'SLE11SP3RTDVD1',
-						path						=> '/',
-						type						=> yast2,
-						keeppackages		=> 0,
-					}
-					zypprepo { 'SLES11SP3RTDVD2':
-    				baseurl         => 'ftp://10.10.10.81/SLE-11-RT-SP3/DVD2',
-    				enabled         => 1,
-    				autorefresh     => 1,
-    				name            => 'SLE11SP3RTDVD2',
-    				path            => '/',
-    				type            => yast2,
-    				keeppackages    => 0,
-					}
 					zypprepo { 'OPENSUSE':
     				baseurl         => 'http://download.opensuse.org/distribution/13.2/repo/oss/',
     				enabled         => 1,
