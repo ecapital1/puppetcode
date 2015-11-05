@@ -1,6 +1,6 @@
 forge "http://forge.puppetlabs.com"
 
-mod "puppetlabs/ntp"
+#mod "puppetlabs/ntp"
 
 mod "base",
 	:git => 'git://github.com:ecapital1/puppetcode.git'
