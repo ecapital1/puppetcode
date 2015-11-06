@@ -8,6 +8,7 @@ class base::sysctl {
     notify  => Exec['sysctl_refresh'],
     }
     exec {"sysctl_refresh":
+      path      => '/sbin',
       command   => "sysctl -p",
   }
 }
