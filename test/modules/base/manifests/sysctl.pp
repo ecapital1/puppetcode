@@ -1,3 +1,10 @@
 class base::sysctl {
-  sysctl { 'net.ipv4.icmp_echo_ignore_broadcasts': value => '1' }
+  file {"/etc/sysctl.conf":
+    ensure  => present,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    file    => 'base/sysctl.conf',
+    notify  => exec["sysctl -p"]
+    }
 }
