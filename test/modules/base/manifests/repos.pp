@@ -2,7 +2,7 @@ class base::repos {
 	case $::osfamily {
 	'Suse': {
 		case $::operatingsystemrelease {
-			'11.3': {
+			'11.3', '12.0': {
 						zypprepo { 'SLES12DVD1':
 							baseurl					=> 'ftp://10.10.10.81/SLES-12/DVD1',
 							enabled					=> 1,
