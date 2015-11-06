@@ -1,6 +1,7 @@
 forge "http://forge.puppetlabs.com"
 
-#mod "puppetlabs/ntp"
+mod "puppetlabs/ntp"
+mod "razorsedge/snmp"
 
 mod "base",
 	:git => 'git://github.com:ecapital1/puppetcode.git'
