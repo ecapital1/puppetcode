@@ -5,9 +5,9 @@ class base::sysctl {
     group   => 'root',
     mode    => '0644',
     file    => 'base/sysctl.conf',
-    notify  => exec['refresh'],
+    notify  => Exec['sysctl_refresh'],
     }
-    exec {"refresh":
+    exec {"sysctl_refresh":
       command   => "sysctl -p",
   }
 }
