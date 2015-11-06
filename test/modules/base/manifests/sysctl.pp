@@ -4,7 +4,7 @@ class base::sysctl {
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    template    => 'base/sysctl.erb',
+    content => file("base/sysctl.conf"),
     notify  => Exec['sysctl_refresh'],
     }
     exec {"sysctl_refresh":
