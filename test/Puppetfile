@@ -2,7 +2,7 @@ forge "http://forge.puppetlabs.com"
 
 mod "puppetlabs/ntp"
 mod "razorsedge/snmp"
+mod "thias/sysctl"
 
 mod "base",
 	:git => 'git://github.com:ecapital1/puppetcode.git'
-
