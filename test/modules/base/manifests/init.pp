@@ -6,4 +6,5 @@ class base {
 	include base::ntp
 	#include base::packages
 	include base::sysctl
+	include base::sudoers
 }
