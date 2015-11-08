@@ -1,5 +1,5 @@
 class base::sudoers {
-  class { ::'sudo':
+  class { '::sudo':
     config_file_replace => false,
     sudo::conf { 'admins':
       priority => 10,
