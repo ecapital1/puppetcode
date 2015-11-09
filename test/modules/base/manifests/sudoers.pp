@@ -45,7 +45,6 @@ class base::sudoers {
         content  => "%epcfg ALL = (ALL) NOPASSWD:/bin/su - epcfg"
       }
     }
-    }
   }
   sudo::conf { 'ITAdmin':
     priority => 1,
