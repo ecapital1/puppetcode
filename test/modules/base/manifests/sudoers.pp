@@ -1,10 +1,12 @@
 class base::sudoers {
   class { '::sudo':
     config_file_replace => false,
-    if $::operatingsystem == 'Suse' {
-      file { '/etc/mft':
-        ensure => file,
-        mode => '0644',
+    case $::role {
+      'mft': {
+        file { '/etc/mft':
+          ensure => file,
+          mode => '0644',
+        }
       }
     }
   }
