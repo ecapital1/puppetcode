@@ -1,5 +1,5 @@
 Facter.add(:hello) do
-  setcoded do
+  setcode do
     "Hello, world"
   end
 end
