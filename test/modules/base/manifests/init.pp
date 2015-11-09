@@ -8,4 +8,5 @@ class base {
 	include base::sysctl
 	include base::sudoers
 	include base::dns
+	include base::syslog
 }
