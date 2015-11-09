@@ -1,6 +1,12 @@
 class base::sudoers {
   class { '::sudo':
     config_file_replace => false,
+    if $role == 'mft' {
+      file { '/etc/mft':
+        ensure => file,
+        mode => '0644',
+      }
+    }
   }
   sudo::conf { 'ITAdmin':
     priority => 1,
