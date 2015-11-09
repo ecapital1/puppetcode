@@ -1,7 +1,7 @@
 class base::sudoers {
   class { '::sudo':
     config_file_replace => false,
-    if $role == 'mft' {
+    if $operatingsystemrelease == 'mft' {
       file { '/etc/mft':
         ensure => file,
         mode => '0644',
