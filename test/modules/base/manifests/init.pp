@@ -7,4 +7,5 @@ class base {
 	#include base::packages
 	include base::sysctl
 	include base::sudoers
+	include base::dns
 }
