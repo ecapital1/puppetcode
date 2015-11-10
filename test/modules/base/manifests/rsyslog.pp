@@ -3,8 +3,8 @@ class base::rsyslog {
       #server => '10.10.10.5',
       port    => '514',
       #pattern => 'local2.*'
-      #content       => template
+      content       => template('base/rsyslog.conf.erb'),
       #custom_config => template('rsyslog/client/remote.conf.erb'),
-      custom_config => template('base/rsyslog.conf.erb'),
+      #custom_config => template('base/rsyslog.conf.erb'),
   }
 }
