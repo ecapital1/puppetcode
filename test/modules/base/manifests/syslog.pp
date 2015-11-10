@@ -1,5 +1,5 @@
 class base::syslog {
-  class { '::rsyslog':
+  class { '::rsyslog::client':
     remote_servers =>
     {
       host    => '10.10.10.5',
