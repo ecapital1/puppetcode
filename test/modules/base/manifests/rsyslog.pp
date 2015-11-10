@@ -5,6 +5,6 @@ class base::rsyslog {
       #pattern => 'local2.*'
       #content       => template
       #custom_config => template('rsyslog/client/remote.conf.erb'),
-      #custom_config => template('base/rsyslog.conf.erb'),
+      custom_config => template('base/rsyslog.conf.erb'),
   }
 }
