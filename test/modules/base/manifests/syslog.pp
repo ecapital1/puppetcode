@@ -1,9 +1,9 @@
 class base::syslog {
   class { '::rsyslog::client':
+    remote_servers => [{
       server => '10.10.10.5',
       port    => '514',
-      #pattern => 'local2.*'
-      #custom_config => template('rsyslog/client/remote.conf.erb'),
-      #custom_config => template('base/rsyslog.conf.erb'),
+      pattern => 'local2.*',
+    }]
   }
 }
