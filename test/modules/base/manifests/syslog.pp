@@ -1,4 +1,4 @@
-class base::rsyslog {
+class base::syslog {
   class { '::rsyslog::client':
       #server => '10.10.10.5',
       port    => '514',
