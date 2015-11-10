@@ -4,6 +4,6 @@ class base::syslog {
       port    => '514',
     #  pattern => 'local2.*'
       #content       => template
-      custom_config => template('base/remote.conf.erb'),
+      custom_config => template('rsyslog.erb'),
   }
 }
