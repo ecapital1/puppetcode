@@ -4,6 +4,6 @@ class base::dellrepo {
   }
   exec { "dell_repo_install":
       command => "/bin/bash /root/bootstrap.cgi",
-      #creates => '/opt/dell'
+      creates => '/opt/dell'
     }
 }
