@@ -7,7 +7,7 @@ class base::sssd {
         'domains'  => 'LDAP',
         },
       'domain/LDAP' => {
-        'ldap_uri'                => 'ldap://10.10.10.147',
+        'ldap_uri'                => 'ldap://10.10.10.14',
         'ldap_search_base'        => 'dc=epochcapital,dc=com,dc=au',
         'ldap_schema'             => 'rfc2307',
         'id_provider'             => 'ldap',
