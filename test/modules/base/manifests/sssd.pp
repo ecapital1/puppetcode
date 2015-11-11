@@ -9,4 +9,5 @@ class base::sssd {
         'key2' => 'value2',
         },
       }
-}
+    }
+  }
