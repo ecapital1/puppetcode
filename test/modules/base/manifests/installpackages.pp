@@ -1,8 +1,9 @@
 class base::installpackages {
-    $packagelist = hiera('ospackages')
-    $packagelist.each |String $packagelist|{
-      package { 'name':
-        ensure => installed,
+    $packages = hiera('ospackages')
+    $packages.each |String $packages|{
+      notify {'packages'}
+    #  package { 'name':
+    #    ensure => installed,
       }
     }
 }
