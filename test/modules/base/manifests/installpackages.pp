@@ -4,6 +4,6 @@ class base::installpackages {
       notify {'packages'}
     #  package { 'name':
     #    ensure => installed,
-      }
+    #  }
     }
 }
