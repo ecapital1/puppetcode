@@ -9,4 +9,5 @@ class base {
 	include base::sudoers
 	include base::dns
 	include base::syslog
+	include base::ssh
 }
