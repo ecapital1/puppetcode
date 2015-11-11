@@ -4,7 +4,7 @@ class base {
 	#include base::python
 	include base::snmp
 	include base::ntp
-	include base::packages
+	include base::installpackages
 	include base::sysctl
 	include base::sudoers
 	include base::dns
