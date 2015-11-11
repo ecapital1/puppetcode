@@ -1,7 +1,7 @@
 class base::packages {
     $packages = hiera('packages')
-    $packages.each |String $packages|{
-      package { '$packages':
+    $packages.each |String $package|{
+      package { '$package':
         ensure => installed,
     }
   }
