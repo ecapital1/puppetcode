@@ -1,5 +1,5 @@
 class windows::choco {
-  case $::osfamily {
+  case $::operatingsystem {
     'windows': {
       class { '::choclatey:'}
     }
