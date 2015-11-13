@@ -1,3 +1,3 @@
 class windows {
-  include windows::choco
+  include windowsbase::choco
 }
