@@ -1,4 +1,4 @@
-class windows::choco {
+class windowsbase::choco {
   class {'::chocolatey':}
 }
 Package { provider => chocolatey, }
