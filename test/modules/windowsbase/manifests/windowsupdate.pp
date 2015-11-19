@@ -6,14 +6,13 @@ file { 'c:/puppetscripts/Run-WindowsUpdate.ps1':
   owner => 'admin',
   group => 'Administrators',
   source => "puppet:///modules/windowsbase/Run-WindowsUpdate.ps1",
-}
-
-}
+  }
 
 scheduled_task { 'windowsupdate':
       ensure    => present,
       enabled   => true,
-      command   => 'C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe - file c:/puppetscripts/Run-WindowsUpdate.ps1',
+      command   => 'c:/puppetscripts/Run-WindowsUpdate.ps1',
+      provider  => powershell,
       #arguments => '/flags /to /pass',
       trigger   => {
         schedule   => monthly,
@@ -21,5 +20,9 @@ scheduled_task { 'windowsupdate':
         start_date => '2015-11-30',
         start_time => '08:00',
       }
+  }
+
+  reboot {'after update':
+      subscribe => scheduled_task['windowsupdate'],
     }
   }
