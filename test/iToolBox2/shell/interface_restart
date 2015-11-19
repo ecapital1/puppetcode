@@ -1,0 +1,27 @@
+#!/bin/bash
+echo "Stopping SFE interface" 
+/opt/rts/rtd/scripts/rtd_stop_rtdsfeif 
+
+echo "Checking whether SFE interface is still running."
+if [ -z `pidof rtdsfeif` ]
+then
+	echo "SFE Interface stopped"
+else
+	echo "SFE interface not stopped, failed to stopping the SFE interface"
+	exit 1
+fi
+
+
+echo "Starting SFE interface" 
+/opt/rts/rtd/scripts/rtd_start_rtdsfeif
+if [ -n "`pidof rtdsfeif`" ]
+then
+	echo "SFE Interface running now"
+else
+	echo "failed to start SFE interface"
+	exit 1
+fi
+
+
+echo "Enabling Process Shielding"
+/opt/rts/rtd/scripts/shield.pl 

@@ -1,0 +1,10 @@
+# Epoch customisations
+PATH=/opt/epoch/bin:$PATH
+export PATH
+LESS=-MIX
+export LESS
+EDITOR=vi
+export EDITOR
+PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}\007"'
+export PROMPT_COMMAND
+ulimit -c unlimited

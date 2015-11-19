@@ -1,0 +1,728 @@
+
+!
+! Last configuration change at 05:05:24 UTC Thu Feb 19 2015 by admin
+! NVRAM config last updated at 06:20:14 UTC Tue Feb 24 2015 by admin
+!
+version 15.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname epcau-sw-cisco6
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 5 $1$kZyk$al60EjpkrYEDSYT9olIBH/
+!
+username admin privilege 0 secret 5 $1$vrdr$V1gPFJrt/aEGNm1b8ugoh0
+username scp privilege 15 secret 5 $1$pjPY$ka5GnSf9eI0EF0f7qxRKy.
+no aaa new-model
+switch 1 provision ws-c2960s-48ts-l
+!
+!
+no ip domain-lookup
+ip domain-name epochcapital.com.au
+ip device tracking
+!
+!
+crypto pki trustpoint TP-self-signed-3351980800
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-3351980800
+ revocation-check none
+ rsakeypair TP-self-signed-3351980800
+!
+!
+crypto pki certificate chain TP-self-signed-3351980800
+ certificate self-signed 01 nvram:IOS-Self-Sig#1.cer
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+vlan access-map HR 1
+ match ip address HR-EPCAU-SERVERS
+ action forward
+vlan access-map HR 2
+ match ip address HR-EPCAU-ACCESS-TO-DEV
+ action forward
+vlan access-map HR 3
+ match ip address HR-REMOTE-ACCESS
+ action forward
+vlan access-map HR 4
+ match ip address HR-EPCAU-FCS
+ action forward
+vlan access-map HR 99
+ match ip address EPCAU
+ action drop
+vlan access-map HR 100
+ action forward
+vlan access-map DEV-LAN 1
+ match ip address DEV-EPCAU-SERVERS
+ action forward
+vlan access-map DEV-LAN 2
+ match ip address DEV-ALC-SERVERS
+ action forward
+vlan access-map DEV-LAN 3
+ match ip address DEV-ID-SERVERS
+ action forward
+vlan access-map DEV-LAN 4
+ match ip address DEV-EPCUK-SERVERS
+ action forward
+vlan access-map DEV-LAN 5
+ match ip address DEV-EXT-SERVERS
+ action forward
+vlan access-map DEV-LAN 6
+ match ip address DEV-EPOSE-SERVERS
+ action forward
+vlan access-map DEV-LAN 7
+ match ip address DEV-ABN-SERVERS
+ action forward
+vlan access-map DEV-LAN 8
+ match ip address DEV-REMOTE-ACCESS
+ action forward
+vlan access-map DEV-LAN 9
+ match ip address DEV-EPSGX-SERVERS
+ action forward
+vlan access-map DEV-LAN 10
+ match ip address DEV-OTFR2-SERVERS
+ action forward
+vlan access-map DEV-LAN 11
+ match ip address DEV-EPCAU-ACCESS-TO-HR
+ action forward
+vlan access-map DEV-LAN 12
+ match ip address DEV-SUPPORT-ACCESS
+ action forward
+vlan access-map DEV-LAN 13
+ match ip address DEV-EPCHK-SERVERS
+ action forward
+vlan access-map DEV-LAN 14
+ match ip address DEV-EPCAU-VLAN-ACCESS
+ action forward
+vlan access-map DEV-LAN 15
+ match ip address DEV-EPCAU-IT-VLAN
+ action forward
+vlan access-map DEV-LAN 99
+ match ip address DEV-EPOCH-NETWORK
+ action drop
+vlan access-map DEV-LAN 100
+ action forward
+vlan access-map OPS-LAN 1
+ match ip address OPS-EPCAU-SERVERS
+ action forward
+vlan access-map OPS-LAN 2
+ match ip address OPS-ALC-SERVERS
+ action forward
+vlan access-map OPS-LAN 3
+ match ip address OPS-ID-SERVERS
+ action forward
+vlan access-map OPS-LAN 4
+ match ip address OPS-EXT-SERVERS
+ action forward
+vlan access-map OPS-LAN 5
+ match ip address OPS-ABN-SERVERS
+ action forward
+vlan access-map OPS-LAN 6
+ match ip address OPS-REMOTE-ACCESS
+ action forward
+vlan access-map OPS-LAN 99
+ match ip address OPS-EPOCH-NETWORK
+ action drop
+vlan access-map OPS-LAN 100
+ action forward
+vlan access-map Guest-Network 1
+ match ip address Guest-Network-Chris-Kospi
+ action forward
+vlan access-map Guest-Network 2
+ match ip address Guest-Network-David-Robo
+ action forward
+vlan access-map Guest-Network 99
+ match ip address EPCAU-Guest
+ action drop
+vlan access-map Guest-Network 100
+ action forward
+!
+vlan filter DEV-LAN vlan-list 5
+vlan filter Guest-Network vlan-list 8
+vlan internal allocation policy ascending
+!
+ip ssh version 2
+ip scp server enable
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+interface FastEthernet0
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/0/1
+ description SERVER-LAN
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/2
+ description SERVER-LAN
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/3
+ description SERVER-LAN
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/4
+ description SERVER-LAN
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/5
+ description SERVER-LAN
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/6
+ description SERVER-LAN
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/7
+ description SERVER-LAN
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/8
+ description SERVER-LAN
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/9
+ description SERVER-LAN
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/10
+ description SERVER-LAN
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/11
+ description SERVER-LAN
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/12
+ description SERVER-LAN
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/13
+ switchport access vlan 5
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky f8b1.569c.9a69
+!
+interface GigabitEthernet1/0/14
+ switchport access vlan 5
+ switchport mode access
+ switchport port-security maximum 4
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 000c.2974.f564
+ switchport port-security mac-address sticky b8ca.3a83.c225
+!
+interface GigabitEthernet1/0/15
+ switchport access vlan 8
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+!
+interface GigabitEthernet1/0/16
+ switchport access vlan 8
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky b8ca.3a80.8d9f
+!
+interface GigabitEthernet1/0/17
+ switchport access vlan 5
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+!
+interface GigabitEthernet1/0/18
+ switchport access vlan 5
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+!
+interface GigabitEthernet1/0/19
+ switchport access vlan 5
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+!
+interface GigabitEthernet1/0/20
+ switchport access vlan 5
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+!
+interface GigabitEthernet1/0/21
+ switchport access vlan 3
+ switchport mode access
+!
+interface GigabitEthernet1/0/22
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+!
+interface GigabitEthernet1/0/23
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 90b1.1c9b.830a
+!
+interface GigabitEthernet1/0/24
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 5cf9.dd6d.60ed
+!
+interface GigabitEthernet1/0/25
+ switchport access vlan 6
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 90b1.1c92.a0ba
+!
+interface GigabitEthernet1/0/26
+ switchport access vlan 6
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 1803.732e.5f60
+!
+interface GigabitEthernet1/0/27
+ switchport access vlan 6
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+!
+interface GigabitEthernet1/0/28
+ switchport access vlan 6
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+!
+interface GigabitEthernet1/0/29
+ switchport access vlan 5
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+!
+interface GigabitEthernet1/0/30
+ switchport access vlan 5
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+!
+interface GigabitEthernet1/0/31
+ switchport access vlan 5
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+!
+interface GigabitEthernet1/0/32
+ switchport access vlan 5
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+!
+interface GigabitEthernet1/0/33
+ switchport access vlan 5
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 90b1.1c6f.28d2
+!
+interface GigabitEthernet1/0/34
+ switchport access vlan 5
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 90b1.1c92.a126
+!
+interface GigabitEthernet1/0/35
+ switchport access vlan 5
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky b8ca.3ab6.63b3
+!
+interface GigabitEthernet1/0/36
+ switchport access vlan 5
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky f8b1.56ad.1151
+!
+interface GigabitEthernet1/0/37
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+!
+interface GigabitEthernet1/0/38
+ switchport access vlan 2
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 90b1.1c9b.87ae
+!
+interface GigabitEthernet1/0/39
+ switchport mode access
+!
+interface GigabitEthernet1/0/40
+ switchport mode access
+!
+interface GigabitEthernet1/0/41
+ switchport mode access
+!
+interface GigabitEthernet1/0/42
+ switchport mode access
+!
+interface GigabitEthernet1/0/43
+ switchport mode access
+!
+interface GigabitEthernet1/0/44
+ switchport mode access
+!
+interface GigabitEthernet1/0/45
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/46
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/47
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/48
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/49
+!
+interface GigabitEthernet1/0/50
+!
+interface GigabitEthernet1/0/51
+!
+interface GigabitEthernet1/0/52
+!
+interface Vlan1
+ ip address 10.10.10.207 255.255.255.0
+!
+ip default-gateway 10.10.10.1
+no ip http server
+no ip http secure-server
+!
+!
+ip access-list extended DEV-ABN-SERVERS
+ permit ip 10.10.25.0 0.0.0.255 10.251.96.0 0.0.31.255
+ permit ip 10.10.25.0 0.0.0.255 host 10.225.244.216
+ permit ip 10.10.25.0 0.0.0.255 host 10.225.244.217
+ permit ip 10.10.25.0 0.0.0.255 host 10.251.46.173
+ip access-list extended DEV-ALC-SERVERS
+ permit ip 10.10.25.0 0.0.0.255 host 10.129.1.14
+ permit ip 10.10.25.0 0.0.0.255 host 10.129.1.15
+ permit ip 10.10.25.0 0.0.0.255 host 10.129.1.16
+ permit ip 10.10.25.0 0.0.0.255 host 10.129.1.17
+ permit ip 10.10.25.0 0.0.0.255 host 10.129.1.18
+ permit ip 10.10.25.0 0.0.0.255 host 10.129.1.19
+ permit ip 10.10.25.0 0.0.0.255 host 10.129.1.20
+ permit ip 10.10.25.0 0.0.0.255 host 10.129.1.21
+ permit ip 10.10.25.0 0.0.0.255 host 10.129.1.22
+ permit tcp 10.10.25.0 0.0.0.255 host 10.129.1.23 eq 3389
+ permit tcp 10.10.25.0 0.0.0.255 host 10.129.1.23 eq telnet
+ permit tcp 10.10.25.0 0.0.0.255 host 10.129.1.23 eq 22
+ permit ip 10.10.25.0 0.0.0.255 host 10.129.1.24
+ permit ip 10.10.25.0 0.0.0.255 host 10.129.1.25
+ permit ip 10.10.25.0 0.0.0.255 host 10.129.1.26
+ permit tcp 10.10.25.0 0.0.0.255 host 10.129.1.27 eq 22
+ permit tcp 10.10.25.0 0.0.0.255 host 10.129.1.27 eq telnet
+ permit tcp 10.10.25.0 0.0.0.255 host 10.129.1.28 eq 3389
+ permit tcp 10.10.25.0 0.0.0.255 host 10.129.1.28 eq telnet
+ permit tcp 10.10.25.0 0.0.0.255 host 10.129.1.28 eq 22
+ permit tcp 10.10.25.0 0.0.0.255 eq 22 host 10.129.1.28
+ permit ip 10.10.25.0 0.0.0.255 host 10.129.1.29
+ permit ip 10.10.25.0 0.0.0.255 host 10.129.1.30
+ip access-list extended DEV-EPCAU-ACCESS-TO-HR
+ permit tcp 10.10.25.0 0.0.0.255 range 31100 31150 10.10.26.0 0.0.0.255
+ permit tcp 10.10.25.0 0.0.0.255 10.10.26.0 0.0.0.255 range 31100 31150
+ permit ip 10.10.25.0 0.0.0.255 10.10.26.0 0.0.0.255
+ip access-list extended DEV-EPCAU-IT-VLAN
+ permit tcp 10.10.25.0 0.0.0.255 10.10.24.0 0.0.0.127 range 4499 44000
+ip access-list extended DEV-EPCAU-SERVERS
+ permit udp 10.10.25.0 0.0.0.255 host 10.10.10.2 eq domain
+ permit udp 10.10.25.0 0.0.0.255 host 10.129.1.21 eq domain
+ permit tcp 10.10.25.0 0.0.0.255 host 10.10.10.7 eq 139
+ permit tcp 10.10.25.0 0.0.0.255 host 10.10.10.7 eq 445
+ permit udp 10.10.25.0 0.0.0.255 host 10.10.10.14 eq 389
+ permit tcp 10.10.25.0 0.0.0.255 host 10.10.10.14 eq 389
+ permit tcp 10.10.25.0 0.0.0.255 host 10.10.10.32 eq 8443
+ permit tcp 10.10.25.0 0.0.0.255 host 10.10.10.8 eq www
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.8.86
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.8.69
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.8.94
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.10.20
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.10.6
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.10.23
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.10.22
+ permit tcp 10.10.25.0 0.0.0.255 host 10.10.10.38 eq www
+ permit tcp 10.10.25.0 0.0.0.255 host 10.10.10.38 eq 8080
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.10.81
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.10.5
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.10.36
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.25.107
+ permit tcp 10.10.25.0 0.0.0.255 10.10.25.0 0.0.0.255 range 31100 31150
+ permit tcp 10.10.25.0 0.0.0.255 range 31100 31150 10.10.25.0 0.0.0.255
+ permit tcp 10.10.25.0 0.0.0.255 10.10.25.0 0.0.0.255 range 44000 44999
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.10.213
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.10.214
+ permit tcp 10.10.25.0 0.0.0.255 host 10.10.10.82 eq www
+ permit tcp 10.10.25.0 0.0.0.255 host 10.10.10.82 eq 22
+ permit icmp any any
+ permit tcp 10.10.25.0 0.0.0.255 host 10.10.10.18 eq 22
+ permit tcp 10.10.25.0 0.0.0.255 host 10.10.10.18 eq telnet
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.10.9
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.25.114
+ permit ip 10.10.25.0 0.0.0.255 10.10.25.0 0.0.0.255
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.10.85
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.10.102
+ permit tcp 10.10.25.0 0.0.0.255 host 10.10.10.82 eq 443
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.10.4
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.10.43
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.10.45
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.10.50
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.10.52
+ip access-list extended DEV-EPCAU-SERVERS.
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.10.37
+ip access-list extended DEV-EPCAU-VLAN-ACCESS
+ permit tcp 10.10.25.0 0.0.0.255 range 44000 44999 10.10.24.128 0.0.0.127 established
+ permit tcp 10.10.25.0 0.0.0.255 range 44000 44999 10.10.8.0 0.0.0.255 established
+ip access-list extended DEV-EPCHK-SERVERS
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.21.11
+ip access-list extended DEV-EPCUK-SERVERS
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.15.3
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.15.115
+ip access-list extended DEV-EPOCH-NETWORK
+ permit ip 10.10.25.0 0.0.0.255 10.0.0.0 0.255.255.255
+ip access-list extended DEV-EPOSE-SERVERS
+ permit tcp 10.10.25.0 0.0.0.255 host 10.10.20.11 eq 22
+ permit tcp 10.10.25.0 0.0.0.255 host 10.10.20.11 eq telnet
+ permit tcp 10.10.25.0 0.0.0.255 host 10.10.20.11 eq 3389
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.20.12
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.20.13
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.20.14
+ip access-list extended DEV-EPSGX-SERVERS
+ permit ip 10.10.25.0 0.0.0.255 host 10.10.23.11
+ip access-list extended DEV-EXT-SERVERS
+ permit ip 10.10.25.0 0.0.0.255 host 10.38.38.10
+ip access-list extended DEV-ID-SERVERS
+ permit ip 10.10.25.0 0.0.0.255 host 10.249.1.6
+ permit ip 10.10.25.0 0.0.0.255 host 10.249.1.7
+ permit tcp 10.10.25.0 0.0.0.255 host 10.249.17.5 eq 22
+ permit tcp 10.10.25.0 0.0.0.255 host 10.249.17.5 eq telnet
+ permit tcp 10.10.25.0 0.0.0.255 host 10.249.17.5 eq 3389
+ permit tcp 10.10.25.0 0.0.0.255 host 10.249.17.6 eq 22
+ permit tcp 10.10.25.0 0.0.0.255 host 10.249.17.6 eq telnet
+ permit tcp 10.10.25.0 0.0.0.255 host 10.249.17.6 eq 3389
+ permit tcp 10.10.25.0 0.0.0.255 host 10.249.17.9 eq 22
+ permit tcp 10.10.25.0 0.0.0.255 host 10.249.17.9 eq telnet
+ip access-list extended DEV-OTFR2-SERVERS
+ permit tcp 10.10.25.0 0.0.0.255 host 10.200.1.84 eq 22
+ permit tcp 10.10.25.0 0.0.0.255 host 10.200.1.84 eq telnet
+ permit tcp 10.10.25.0 0.0.0.255 host 10.200.1.84 eq 3389
+ permit tcp 10.10.25.0 0.0.0.255 host 10.200.1.85 eq 22
+ permit tcp 10.10.25.0 0.0.0.255 host 10.200.1.85 eq telnet
+ip access-list extended DEV-REMOTE-ACCESS
+ permit tcp 10.10.25.0 0.0.0.255 eq 3389 10.129.4.0 0.0.0.255 established
+ permit tcp 10.10.25.0 0.0.0.255 eq 3389 10.10.13.0 0.0.0.255 established
+ permit tcp 10.10.25.0 0.0.0.255 eq 22 10.129.4.0 0.0.0.255 established
+ permit tcp 10.10.25.0 0.0.0.255 eq 22 10.10.13.0 0.0.0.255 established
+ permit tcp 10.10.25.0 0.0.0.255 eq 3389 10.129.41.64 0.0.0.63 established
+ permit tcp 10.10.25.0 0.0.0.255 eq 22 10.129.41.64 0.0.0.63 established
+ip access-list extended DEV-SUPPORT-ACCESS
+ permit tcp 10.10.25.0 0.0.0.255 10.10.24.0 0.0.0.127 established
+ip access-list extended EPCAU
+ permit ip 10.10.26.0 0.0.0.255 10.0.0.0 0.255.255.255
+ip access-list extended EPCAU-Guest
+ permit ip 10.10.28.0 0.0.0.255 10.0.0.0 0.255.255.255
+ip access-list extended Guest-Network-Chris-Kospi
+ permit ip host 10.10.28.2 host 10.129.1.14
+ permit icmp host 10.10.28.2 any
+ permit tcp host 10.10.28.2 host 10.10.10.2 eq domain
+ permit udp host 10.10.28.2 host 10.10.10.2 eq domain
+ permit tcp host 10.10.28.2 eq 3389 10.10.24.0 0.0.0.127 established
+ permit icmp host 10.10.28.2 host 0.0.0.0 echo-reply
+ permit tcp any host 10.10.10.82 eq www
+ permit ip host 10.10.28.2 host 10.129.1.22
+ permit ip host 10.10.28.2 host 10.129.1.23
+ permit ip host 10.10.28.2 host 10.129.1.28
+ permit tcp host 10.10.28.2 host 10.10.10.4 range 24000 24999
+ permit ip host 10.10.28.2 host 10.129.1.19
+ permit ip host 10.10.28.2 host 10.10.10.18
+ permit ip host 10.10.28.2 host 10.129.1.27
+ permit ip host 10.10.28.2 host 10.10.10.12
+ip access-list extended Guest-Network-David-Robo
+ permit ip host 10.10.28.3 host 10.129.1.14
+ permit icmp host 10.10.28.3 any
+ permit tcp host 10.10.28.3 host 10.10.10.2 eq domain
+ permit udp host 10.10.28.3 host 10.10.10.2 eq domain
+ permit tcp host 10.10.28.3 eq 3389 10.10.24.0 0.0.0.127 established
+ permit icmp host 10.10.28.3 host 0.0.0.0 echo-reply
+ permit tcp any host 10.10.10.82 eq www
+ permit ip host 10.10.28.3 host 10.129.1.22
+ permit ip host 10.10.28.3 host 10.129.1.23
+ permit ip host 10.10.28.3 host 10.129.1.28
+ permit tcp host 10.10.28.3 host 10.10.10.4 range 24000 24999
+ permit ip host 10.10.28.3 host 10.129.1.19
+ permit ip host 10.10.28.3 host 10.10.10.18
+ permit ip host 10.10.28.3 host 10.129.1.27
+ permit ip host 10.10.28.2 host 10.10.10.12
+ip access-list extended HR-EPCAU-ACCESS-TO-DEV
+ permit tcp 10.10.26.0 0.0.0.255 range 31100 31150 10.10.25.0 0.0.0.255
+ permit tcp 10.10.26.0 0.0.0.255 10.10.25.0 0.0.0.255 range 31100 31150
+ permit icmp 10.10.26.0 0.0.0.255 10.10.25.0 0.0.0.255 echo-reply
+ permit icmp 10.10.26.0 0.0.0.255 10.10.25.0 0.0.0.255
+ permit tcp 10.10.26.0 0.0.0.255 host 10.10.10.20 eq 7777
+ permit tcp 10.10.26.0 0.0.0.255 host 10.10.10.20 eq 9876
+ permit ip 10.10.26.0 0.0.0.255 10.10.25.0 0.0.0.255
+ permit ip 10.10.26.0 0.0.0.255 10.10.26.0 0.0.0.255
+ip access-list extended HR-EPCAU-FCS
+ permit tcp 10.10.26.0 0.0.0.255 host 10.10.10.82 eq www
+ip access-list extended HR-EPCAU-SERVERS
+ permit udp 10.10.26.0 0.0.0.255 host 10.10.10.2 eq domain
+ permit udp 10.10.26.0 0.0.0.255 host 10.129.1.21 eq domain
+ permit tcp 10.10.26.0 0.0.0.255 host 10.10.10.7 eq 139
+ permit tcp 10.10.26.0 0.0.0.255 host 10.10.10.7 eq 445
+ permit tcp 10.10.26.0 0.0.0.255 host 10.10.10.32 eq 8443
+ permit tcp 10.10.26.0 0.0.0.255 host 10.10.10.8 eq www
+ permit tcp 10.10.26.0 0.0.0.255 host 10.10.10.14 eq 389
+ permit ip 10.10.26.0 0.0.0.255 host 10.10.10.215
+ permit ip 10.10.26.0 0.0.0.255 host 10.10.10.38
+ permit ip 10.10.26.0 0.0.0.255 host 10.10.10.12
+ permit tcp 10.10.26.0 0.0.0.255 host 10.10.10.82 eq www
+ permit tcp 10.10.26.0 0.0.0.255 host 10.10.10.82 eq 443
+ permit ip 10.10.26.0 0.0.0.255 host 10.10.10.104
+ permit ip 10.10.26.0 0.0.0.255 host 10.10.10.52
+ip access-list extended HR-REMOTE-ACCESS
+ permit tcp 10.10.26.0 0.0.0.255 eq 3389 10.129.4.0 0.0.0.255 established
+ permit tcp 10.10.26.0 0.0.0.255 eq 3389 10.10.13.0 0.0.0.255 established
+ permit tcp 10.10.26.0 0.0.0.255 eq 22 10.129.4.0 0.0.0.255 established
+ permit tcp 10.10.26.0 0.0.0.255 eq 22 10.10.13.0 0.0.0.255 established
+ permit tcp 10.10.26.0 0.0.0.255 10.10.25.0 0.0.0.255 established
+ permit tcp 10.10.26.0 0.0.0.255 10.10.24.0 0.0.0.127 established
+ip access-list extended OPS-ABN-SERVERS
+ permit ip 10.10.24.128 0.0.0.127 10.225.198.0 0.0.1.255
+ permit ip 10.10.24.128 0.0.0.127 10.225.244.192 0.0.0.31
+ permit ip 10.10.24.128 0.0.0.127 10.225.244.224 0.0.0.31
+ permit ip 10.10.24.128 0.0.0.127 10.251.96.0 0.0.31.255
+ip access-list extended OPS-ALC-SERVERS
+ permit ip 10.10.24.128 0.0.0.127 host 10.129.1.14
+ permit ip 10.10.24.128 0.0.0.127 host 10.129.1.15
+ permit ip 10.10.24.128 0.0.0.127 host 10.129.1.16
+ permit ip 10.10.24.128 0.0.0.127 host 10.129.1.17
+ permit ip 10.10.24.128 0.0.0.127 host 10.129.1.18
+ permit ip 10.10.24.128 0.0.0.127 host 10.129.1.19
+ permit ip 10.10.24.128 0.0.0.127 host 10.129.1.20
+ permit ip 10.10.24.128 0.0.0.127 host 10.129.1.21
+ permit ip 10.10.24.128 0.0.0.127 host 10.129.1.22
+ permit ip 10.10.24.128 0.0.0.127 host 10.129.1.23
+ permit ip 10.10.24.128 0.0.0.127 host 10.129.1.24
+ permit ip 10.10.24.128 0.0.0.127 host 10.129.1.25
+ permit ip 10.10.24.128 0.0.0.127 host 10.129.1.26
+ permit ip 10.10.24.128 0.0.0.127 host 10.129.1.27
+ permit ip 10.10.24.128 0.0.0.127 host 10.129.1.28
+ permit ip 10.10.24.128 0.0.0.127 host 10.129.1.29
+ip access-list extended OPS-EPCAU-SERVERS
+ permit udp 10.10.24.128 0.0.0.127 host 10.10.10.2 eq domain
+ permit udp 10.10.24.128 0.0.0.127 host 10.129.1.21 eq domain
+ permit tcp 10.10.24.128 0.0.0.127 host 10.10.10.7 eq 139
+ permit tcp 10.10.24.128 0.0.0.127 host 10.10.10.7 eq 445
+ permit udp 10.10.24.128 0.0.0.127 host 10.10.10.14 eq 389
+ permit tcp 10.10.24.128 0.0.0.127 host 10.10.10.14 eq 389
+ permit tcp 10.10.24.128 0.0.0.127 host 10.10.10.32 eq 8443
+ permit tcp 10.10.24.128 0.0.0.127 host 10.10.10.8 eq www
+ permit ip 10.10.24.128 0.0.0.127 host 10.10.8.86
+ permit ip 10.10.24.128 0.0.0.127 host 10.10.8.69
+ permit ip 10.10.24.128 0.0.0.127 host 10.10.8.94
+ permit ip 10.10.24.128 0.0.0.127 host 10.10.10.213
+ permit ip 10.10.24.128 0.0.0.127 host 10.10.10.214
+ permit ip 10.10.24.128 0.0.0.127 host 10.10.10.215
+ permit ip 10.10.24.128 0.0.0.127 host 10.10.10.18
+ permit tcp 10.10.24.128 0.0.0.127 host 10.10.10.38 eq www
+ permit tcp 10.10.24.128 0.0.0.127 host 10.10.10.38 eq 8080
+ permit tcp 10.10.24.128 0.0.0.127 host 10.10.10.82 eq www
+ permit tcp 10.10.24.128 0.0.0.127 host 10.10.10.81 eq 5432
+ permit ip 10.10.24.128 0.0.0.127 host 10.10.10.12
+ permit tcp 10.10.24.128 0.0.0.127 host 10.10.10.20 eq 5666
+ permit tcp 10.10.24.128 0.0.0.127 host 10.10.10.20 eq 8989
+ permit tcp 10.10.24.128 0.0.0.127 host 10.10.10.82 eq 443
+ip access-list extended OPS-EPOCH-NETWORK
+ permit ip 10.10.24.128 0.0.0.127 10.0.0.0 0.255.255.255
+ip access-list extended OPS-EXT-SERVERS
+ permit ip 10.10.24.128 0.0.0.127 host 10.38.38.10
+ permit ip 10.10.24.128 0.0.0.127 host 10.10.18.97
+ permit ip 10.10.24.128 0.0.0.127 host 10.10.18.98
+ip access-list extended OPS-ID-SERVERS
+ permit ip 10.10.24.128 0.0.0.127 host 10.249.1.6
+ permit ip 10.10.24.128 0.0.0.127 host 10.249.1.7
+ permit ip 10.10.24.128 0.0.0.127 host 10.249.17.5
+ permit ip 10.10.24.128 0.0.0.127 host 10.249.17.6
+ip access-list extended OPS-REMOTE-ACCESS
+ permit tcp 10.10.24.128 0.0.0.127 eq 3389 10.129.4.0 0.0.0.255 established
+ permit tcp 10.10.24.128 0.0.0.127 eq 3389 10.10.13.0 0.0.0.255 established
+ permit tcp 10.10.24.128 0.0.0.127 eq 3389 10.10.10.0 0.0.0.255 established
+logging history size 500
+logging facility local3
+logging host 10.10.10.5
+!
+!
+banner login 
+####################################################################################
+#                                                                                  #
+#       This is an official computer system and is the property of Epoch           #
+#       Capital. It is for authorized users only. Unauthorized users               #
+#       are prohibited. Users (authorized or unauthorized) have no explicit        #
+#       or implicit expectation of privacy. Any or all uses of this system         #
+#       may be subject to one or more of the following actions: interception,      #
+#       monitoring, recording, auditing, inspection and disclosing to security     #
+#       personnel and law enforcement personnel, as well as authorized             #
+#       officials of other agencies, both domestic and foreign. By using this      #
+#       system, the user consents to these actions. Unauthorized or improper       #
+#       use of this system may result in administrative disciplinary action        #
+#       and civil and criminal penalties. By accessing this system you             #
+#       indicate your awareness of and consent to these terms and conditions       #
+#       of use. Discontinue access immediately if you do not agree to the          #
+#       conditions stated in this notice.                                          #
+#                                                                                  #
+####################################################################################
+
+!
+line con 0
+line vty 0 4
+ exec-timeout 60 0
+ logging synchronous
+ login local
+ transport input ssh
+line vty 5 15
+ login
+!
+ntp server 10.129.1.21
+ntp server 10.10.10.14
+end

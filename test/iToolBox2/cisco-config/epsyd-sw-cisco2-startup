@@ -1,0 +1,333 @@
+
+!
+! Last configuration change at 01:29:13 UTC Thu Apr 8 1993
+!
+version 15.0
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname epsyd-switch-cisco2
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 4 2tFEGF.G8f9pBBTihF/RZfsR4Cscj1aGXhNDr2LBap2
+!
+username admin secret 4 tu3RKgvS6MiAXFWCmqCagGlfY4IeLfZ2UwJYj9G1f62
+username scp privilege 15 secret 4 Etf7.sYL.zeacYd63y/RWy9O7PyotMDFsKV9wK9ap1o
+no aaa new-model
+system mtu routing 1500
+ip routing
+ip domain-name epochcapital.com.au
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-1731542272
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-1731542272
+ revocation-check none
+ rsakeypair TP-self-signed-1731542272
+!
+!
+crypto pki certificate chain TP-self-signed-1731542272
+ certificate self-signed 01 nvram:IOS-Self-Sig#1.cer
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+!
+vlan access-map arun-network 5
+ match ip address arun1 103
+ action forward
+vlan access-map arun-network 6
+ match ip address 104
+ action forward
+vlan access-map arun-network 10
+ match ip address arun2 102
+ action drop
+vlan access-map arun-network 15
+ action forward
+!
+vlan filter arun-network vlan-list 6
+vlan internal allocation policy ascending
+!
+ip scp server enable
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Port-channel1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet0/1
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 90b1.1c83.1595
+!
+interface GigabitEthernet0/2
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 90b1.1c83.1c4c
+!
+interface GigabitEthernet0/3
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 90b1.1c83.267c
+!
+interface GigabitEthernet0/4
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 90b1.1c83.19d4
+!
+interface GigabitEthernet0/5
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+!
+interface GigabitEthernet0/6
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 90b1.1c83.19ef
+!
+interface GigabitEthernet0/7
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 90b1.1c83.1c76
+!
+interface GigabitEthernet0/8
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 90b1.1c83.1dac
+!
+interface GigabitEthernet0/9
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 90b1.1c83.1dca
+!
+interface GigabitEthernet0/10
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 90b1.1c83.1e01
+!
+interface GigabitEthernet0/11
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 90b1.1c83.1e1d
+!
+interface GigabitEthernet0/12
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+!
+interface GigabitEthernet0/13
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+!
+interface GigabitEthernet0/14
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 90b1.1c83.1cf6
+!
+interface GigabitEthernet0/15
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 90b1.1c83.1b49
+!
+interface GigabitEthernet0/16
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+!
+interface GigabitEthernet0/17
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+!
+interface GigabitEthernet0/18
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+!
+interface GigabitEthernet0/19
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 5cf9.dd75.bab9
+!
+interface GigabitEthernet0/20
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+!
+interface GigabitEthernet0/21
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky
+!
+interface GigabitEthernet0/22
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 1 mode on
+ spanning-tree portfast
+!
+interface GigabitEthernet0/23
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 1 mode on
+ spanning-tree portfast
+!
+interface GigabitEthernet0/24
+ no switchport
+ ip address 10.20.1.2 255.255.255.0
+!
+interface GigabitEthernet0/25
+!
+interface GigabitEthernet0/26
+!
+interface GigabitEthernet0/27
+!
+interface GigabitEthernet0/28
+!
+interface Vlan1
+ description epoch-network
+ ip address 10.10.16.202 255.255.255.0
+ standby 1 ip 10.10.16.1
+ standby 1 timers 1 3
+ standby 1 priority 110
+!
+interface Vlan2
+ ip address 10.10.17.202 255.255.255.0
+ standby 1 ip 10.10.17.1
+ standby 1 priority 110
+!
+interface Vlan3
+ ip address 10.10.18.202 255.255.255.0
+ standby 1 ip 10.10.18.1
+ standby 1 priority 110
+!
+interface Vlan6
+ ip address 10.10.19.202 255.255.255.0
+ standby 1 ip 10.10.19.1
+ standby 1 priority 110
+!
+router ospf 1
+ passive-interface Vlan2
+ passive-interface Vlan3
+ passive-interface Vlan6
+ network 10.10.16.0 0.0.0.255 area 0
+ network 10.10.17.0 0.0.0.255 area 0
+ network 10.10.18.0 0.0.0.255 area 0
+ network 10.10.19.0 0.0.0.255 area 0
+ network 10.20.1.0 0.0.0.3 area 0
+!
+ip default-gateway 10.10.16.200
+no ip http server
+no ip http secure-server
+!
+ip route 0.0.0.0 0.0.0.0 10.20.1.1
+!
+ip access-list extended arun1
+ permit ip any 10.10.19.0 0.0.0.255
+ permit ip any 10.225.244.192 0.0.0.31
+ip access-list extended arun2
+ permit ip any 10.0.0.0 0.255.255.255
+!
+access-list 2 remark Opsview SNMP Connection
+access-list 2 permit 10.10.10.173
+access-list 2 deny   any log
+access-list 101 permit tcp host 10.10.10.2 any eq 22 log
+access-list 101 permit tcp host 10.10.10.82 any eq 22 log
+access-list 101 permit tcp host 10.10.16.5 any eq 22 log
+access-list 102 permit ip any 10.0.0.0 0.255.255.255
+access-list 103 permit ip any 10.10.19.0 0.0.0.255
+access-list 104 permit ip any 10.225.244.192 0.0.0.31
+snmp-server community 3p0chSNMP RO 2
+!
+banner motd 
+
+####################################################################################
+#                                                                                  #
+#       This is an official computer system and is the property of Epoch           #
+#       Capital. It is for authorized users only. Unauthorized users               #
+#       are prohibited. Users (authorized or unauthorized) have no explicit        #
+#       or implicit expectation of privacy. Any or all uses of this system         #
+#       may be subject to one or more of the following actions: interception,      #     
+#       monitoring, recording, auditing, inspection and disclosing to security     #
+#       personnel and law enforcement personnel, as well as authorized             #
+#       officials of other agencies, both domestic and foreign. By using this      #
+#       system, the user consents to these actions. Unauthorized or improper       #
+#       use of this system may result in administrative disciplinary action        #
+#       and civil and criminal penalties. By accessing this system you             #
+#       indicate your awareness of and consent to these terms and conditions       #
+#       of use. Discontinue access immediately if you do not agree to the          #
+#       conditions stated in this notice.                                          #
+#                                                                                  #
+####################################################################################
+
+
+!
+line con 0
+ password 7 124A154711030D0027222A
+ logging synchronous
+line vty 0 4
+ access-class 101 in
+ exec-timeout 60 0
+ privilege level 0
+ logging synchronous
+ login local
+ transport input ssh
+line vty 5 15
+ login
+!
+end

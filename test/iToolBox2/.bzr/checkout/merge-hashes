@@ -1,0 +1,12 @@
+BZR merge-modified list format 1
+file_id: rsync.txt-20150603015019-6rurt1wgxzr2z6ib-2
+hash: c382c0396ebe264ed6d746839d2a5c91f1edbe3b
+
+file_id: sssd.conf-20150707003320-ze6drihz0suapz8b-10
+hash: c03bcedd82b5edf2a08a5618038d00d1e59c6ea8
+
+file_id: sudoers-20150707003320-ze6drihz0suapz8b-6
+hash: db6fb8439c788f43a9086a337c6cb4a2259ef937
+
+file_id: vimrc-20140620003541-3brvw3xz2p0ir91l-43
+hash: 6e0575931d83208075268e4cb164eb05773636c8

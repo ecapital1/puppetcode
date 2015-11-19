@@ -1,0 +1,215 @@
+
+!
+! Last configuration change at 16:02:29 NSW Fri Jul 4 2014 by admin
+! NVRAM config last updated at 09:35:55 NSW Thu Aug 28 2014 by admin
+!
+version 15.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname alc-sw-cisco2
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 5 $1$s4Yf$1EE49Q3WBXW1kCPGguGSC/
+!
+username admin privilege 0 secret 5 $1$CGBd$TFygI0lUJ3FoqAY7IBjgK.
+username scp privilege 15 secret 5 $1$X4A6$IArtscAv3vrZUvd6N0zV30
+no aaa new-model
+clock timezone NSW 10 0
+system mtu routing 1500
+ip routing
+!
+!
+ip domain-name epochcapital.com.au
+ip device tracking
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+spanning-tree vlan 1 priority 28672
+!
+!
+!
+!
+!
+!
+!
+!
+!
+vlan internal allocation policy ascending
+!
+ip ssh version 2
+ip scp server enable
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+interface Port-channel1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet0
+ no ip address
+ no ip route-cache
+ shutdown
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface GigabitEthernet0/3
+!
+interface GigabitEthernet0/4
+!
+interface GigabitEthernet0/5
+!
+interface GigabitEthernet0/6
+!
+interface GigabitEthernet0/7
+!
+interface GigabitEthernet0/8
+!
+interface GigabitEthernet0/9
+!
+interface GigabitEthernet0/10
+!
+interface GigabitEthernet0/11
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet0/12
+!
+interface GigabitEthernet0/13
+!
+interface GigabitEthernet0/14
+!
+interface GigabitEthernet0/15
+!
+interface GigabitEthernet0/16
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet0/17
+ description alc-srv-014-eth0
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet0/18
+!
+interface GigabitEthernet0/19
+!
+interface GigabitEthernet0/20
+!
+interface GigabitEthernet0/21
+ description SW2-SW4
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet0/22
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet0/23
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 1 mode on
+!
+interface GigabitEthernet0/24
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 1 mode on
+!
+interface GigabitEthernet1/1
+!
+interface GigabitEthernet1/2
+!
+interface GigabitEthernet1/3
+!
+interface GigabitEthernet1/4
+!
+interface TenGigabitEthernet1/1
+!
+interface TenGigabitEthernet1/2
+!
+interface Vlan1
+ ip address 10.129.1.201 255.255.255.0
+ no ip redirects
+ no standby redirect unknown
+ standby 1 ip 10.129.1.254
+ standby 1 timers 1 3
+ standby 1 preempt
+!
+interface Vlan150
+ ip address 159.220.225.2 255.255.255.240
+ standby 2 ip 159.220.225.3
+ standby 2 timers 1 3
+ standby 2 preempt
+!
+router ospf 1
+ passive-interface Vlan150
+ network 10.129.1.0 0.0.0.255 area 0
+ network 159.220.225.0 0.0.0.15 area 0
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+!
+!
+!
+ip sla enable reaction-alerts
+logging history size 500
+logging facility local3
+logging host 10.10.10.5
+access-list 2 permit 10.10.10.5
+access-list 2 deny   any
+!
+snmp-server community 3p0chSNMP RO 2
+!
+banner login 
+####################################################################################
+#                                                                                  #
+#       This is an official computer system and is the property of Epoch           #
+#       Capital. It is for authorized users only. Unauthorized users               #
+#       are prohibited. Users (authorized or unauthorized) have no explicit        #
+#       or implicit expectation of privacy. Any or all uses of this system         #
+#       may be subject to one or more of the following actions: interception,      #
+#       monitoring, recording, auditing, inspection and disclosing to security     #
+#       personnel and law enforcement personnel, as well as authorized             #
+#       officials of other agencies, both domestic and foreign. By using this      #
+#       system, the user consents to these actions. Unauthorized or improper       #
+#       use of this system may result in administrative disciplinary action        #
+#       and civil and criminal penalties. By accessing this system you             #
+#       indicate your awareness of and consent to these terms and conditions       #
+#       of use. Discontinue access immediately if you do not agree to the          #
+#       conditions stated in this notice.                                          #
+#                                                                                  #
+####################################################################################
+
+!
+line con 0
+line vty 0 4
+ exec-timeout 60 0
+ logging synchronous
+ login local
+ transport input ssh
+line vty 5 15
+ login
+!
+ntp server 10.129.1.21 maxpoll 4
+ntp server 10.129.1.14 maxpoll 4
+end

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for id in `rtdsrvutil -i | grep '127.0.0.1:0.0' | awk '{print $1}'`
+do
+	 echo "Killing ID $id"
+	rtdsrvutil -K $id || echo "failed to Kill User ID $id"
+ done

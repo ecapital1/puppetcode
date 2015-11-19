@@ -1,0 +1,296 @@
+
+!
+! Last configuration change at 16:12:30 NSW Fri Mar 1 2013 by admin
+version 15.3
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname epsyd-router-cisco1
+!
+boot-start-marker
+boot system flash c1900-universalk9-mz.SPA.153-1.T.bin
+boot-end-marker
+!
+!
+logging buffered 51200 warnings
+enable secret 4 2tFEGF.G8f9pBBTihF/RZfsR4Cscj1aGXhNDr2LBap2
+!
+aaa new-model
+!
+!
+aaa authentication login default local
+aaa authentication login vpn_xauth_m1_1 local
+aaa authentication login sslvpn local
+aaa authentication login userauthen local
+aaa authentication login AUTHE group radius
+aaa authorization exec default local 
+aaa authorization network vpn_group_ml_1 local 
+aaa authorization network groupauthor local 
+!
+!
+!
+!
+!
+aaa session-id common
+clock timezone NSW 10 0
+!
+no ip source-route
+ip cef
+!
+!
+!
+!
+!
+!
+no ip bootp server
+no ip domain lookup
+ip domain name epochcapital.com.au
+ip name-server 10.10.10.2
+ip inspect name fw tcp
+ip inspect name fw udp
+ip inspect name fw icmp router-traffic
+ipv6 multicast rpf use-bgp
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+crypto pki trustpoint TP-self-signed-178461553
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-178461553
+ revocation-check none
+ rsakeypair TP-self-signed-178461553
+!
+!
+crypto pki certificate chain TP-self-signed-178461553
+ certificate self-signed 01 nvram:IOS-Self-Sig#1.cer
+license udi pid CISCO1921/K9 sn FGL1642255D
+!
+!
+username admin privilege 0 secret 4 tu3RKgvS6MiAXFWCmqCagGlfY4IeLfZ2UwJYj9G1f62
+username scp privilege 15 secret 4 Etf7.sYL.zeacYd63y/RWy9O7PyotMDFsKV9wK9ap1o
+!
+redundancy
+!
+!
+!
+!
+!
+ip scp server enable
+csdb tcp synwait-time 30
+csdb tcp idle-time 3600
+csdb tcp finwait-time 5
+csdb tcp reassembly max-memory 1024
+csdb tcp reassembly max-queue-length 16
+csdb udp idle-time 30
+csdb icmp idle-time 10
+csdb session max-session 65535
+! 
+!
+crypto isakmp policy 1
+ encr aes
+ hash md5
+ authentication pre-share
+ group 2
+!
+crypto isakmp policy 2
+ encr aes
+ authentication pre-share
+ group 2
+!
+crypto isakmp policy 3
+ encr 3des
+ authentication pre-share
+ group 2
+crypto isakmp key N2u#L^!dy8d1neho address 203.29.131.218  no-xauth
+crypto isakmp key 7&QBAD3xd4YZefCn address 203.192.167.194 no-xauth
+!
+!
+crypto ipsec transform-set AES-SHA esp-aes esp-sha-hmac 
+ mode tunnel
+!
+!
+!
+crypto map EPSYD client authentication list AUTHE
+crypto map EPSYD isakmp authorization list groupauthor
+crypto map EPSYD client configuration address respond
+crypto map EPSYD 1 ipsec-isakmp 
+ set peer 203.29.131.218
+ set transform-set AES-SHA 
+ set pfs group2
+ match address 101
+crypto map EPSYD 2 ipsec-isakmp 
+ set peer 203.192.167.194
+ set transform-set AES-SHA 
+ set pfs group2
+ match address 103
+!
+!
+!
+!
+!
+interface Tunnel1
+ ip address 10.20.0.22 255.255.255.252
+ ip mtu 1398
+ ip nat inside
+ ip virtual-reassembly in
+ ip ospf cost 10000
+ tunnel source Dialer1
+ tunnel destination 203.29.131.218
+!
+interface Tunnel2
+ ip address 10.20.0.25 255.255.255.252
+ ip mtu 1398
+ ip nat inside
+ ip virtual-reassembly in
+ ip ospf cost 10000
+ keepalive 10 3
+ tunnel source Dialer1
+ tunnel destination 203.192.167.194
+!
+interface Embedded-Service-Engine0/0
+ no ip address
+ shutdown
+!
+interface GigabitEthernet0/0
+ description EPSYDInternetGateway
+ no ip address
+ no ip proxy-arp
+ ip tcp adjust-mss 1452
+ duplex auto
+ speed auto
+ pppoe enable group global
+ pppoe-client dial-pool-number 1
+ no mop enabled
+!
+interface GigabitEthernet0/1
+ ip address 10.20.1.1 255.255.255.0
+ no ip proxy-arp
+ ip nat inside
+ ip virtual-reassembly in
+ duplex auto
+ speed auto
+ no mop enabled
+!
+interface Dialer1
+ description ADSL Dialer
+ ip address negotiated
+ ip access-group incoming_pub in
+ no ip proxy-arp
+ ip mtu 1492
+ ip nat outside
+ ip inspect fw out
+ ip virtual-reassembly in
+ encapsulation ppp
+ dialer pool 1
+ dialer-group 1
+ ppp authentication pap chap callin
+ ppp chap hostname epo102398@pig.tpg.com.au
+ ppp chap password 7 091D1E5B4A5C4F171B03
+ ppp pap sent-username epo102398@pig.tpg.com.au password 7 12485545415254013A24
+ crypto map EPSYD
+!
+router ospf 1
+ redistribute static subnets
+ network 10.10.16.0 0.0.0.255 area 0
+ network 10.20.0.20 0.0.0.3 area 0
+ network 10.20.0.24 0.0.0.3 area 0
+ network 10.20.1.0 0.0.0.3 area 0
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+ip nat inside source list 130 interface Dialer1 overload
+ip route 0.0.0.0 0.0.0.0 203.219.100.173
+ip route 10.10.17.0 255.255.255.0 10.10.16.201
+!
+ip access-list extended incoming_pub
+ permit udp any host 203.219.100.174 eq non500-isakmp
+ remark Incoming internet traffic
+ permit udp any host 203.219.100.174 eq isakmp
+ permit ahp any host 203.219.100.174
+ permit esp any host 203.219.100.174
+ permit icmp any host 203.219.100.174
+ deny   ip any any
+!
+no cdp run
+!
+!
+snmp-server community 3p0chSNMP RO 2
+snmp-server enable traps entity-sensor threshold
+access-list 2 remark Opsview SNMP Connection
+access-list 2 permit 10.10.10.173
+access-list 2 deny   any log
+access-list 101 remark VPN to EPCAU
+access-list 101 permit ip host 203.219.100.174 host 203.29.131.218 log
+access-list 102 permit tcp host 10.10.16.5 any eq 22 log
+access-list 102 permit tcp host 10.10.10.82 any eq 22 log
+access-list 102 permit tcp host 10.10.10.2 any eq 22 log
+access-list 102 remark Remote to Local Connection
+access-list 102 permit tcp host 10.10.10.20 any eq 22 log
+access-list 102 permit tcp host 10.129.1.21 any eq 22 log
+access-list 103 remark VPN to ALC
+access-list 103 permit ip host 203.219.100.174 host 203.192.167.194 log
+access-list 130 permit ip 10.10.16.0 0.0.0.255 any
+access-list 130 permit ip 10.10.17.0 0.0.0.255 any
+access-list 130 permit ip 10.10.18.0 0.0.0.255 any
+access-list 130 permit ip 10.10.19.0 0.0.0.255 any
+access-list 130 remark NAT List
+!
+!
+!
+control-plane
+!
+!
+banner motd 
+
+####################################################################################
+#                                                                                  #
+#       This is an official computer system and is the property of Epoch           #
+#       Capital. It is for authorized users only. Unauthorized users               #
+#       are prohibited. Users (authorized or unauthorized) have no explicit        #
+#       or implicit expectation of privacy. Any or all uses of this system         #
+#       may be subject to one or more of the following actions: interception,      #     
+#       monitoring, recording, auditing, inspection and disclosing to security     #
+#       personnel and law enforcement personnel, as well as authorized             #
+#       officials of other agencies, both domestic and foreign. By using this      #
+#       system, the user consents to these actions. Unauthorized or improper       #
+#       use of this system may result in administrative disciplinary action        #
+#       and civil and criminal penalties. By accessing this system you             #
+#       indicate your awareness of and consent to these terms and conditions       #
+#       of use. Discontinue access immediately if you do not agree to the          #
+#       conditions stated in this notice.                                          #
+#                                                                                  #
+####################################################################################
+
+
+!
+line con 0
+ exec-timeout 5 0
+ password 7 075C311C4D0118011A1B05
+ logging synchronous
+line aux 0
+ exec-timeout 0 1
+ no exec
+line 2
+ no activation-character
+ no exec
+ transport preferred none
+ transport output pad telnet rlogin lapb-ta mop udptn v120 ssh
+ stopbits 1
+line vty 0 4
+ access-class 102 in
+ exec-timeout 60 0
+ privilege level 0
+ logging synchronous
+ transport input ssh
+line vty 5 15
+ transport input none
+!
+scheduler allocate 20000 1000
+!
+end

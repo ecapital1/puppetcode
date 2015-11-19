@@ -1,0 +1,611 @@
+
+!
+! Last configuration change at 04:41:01 UTC Tue Feb 10 2015 by admin
+! NVRAM config last updated at 01:14:01 UTC Fri Feb 13 2015 by admin
+!
+version 15.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname epcuk-router-cisco1
+!
+boot-start-marker
+boot system flash c1900-universalk9-mz.SPA.154-3.M1.bin
+boot system flash c1900-universalk9-mz.SPA.154-1.T.bin
+boot-end-marker
+!
+!
+logging buffered 51200
+enable secret 5 $1$kId4$HTf7QyKR6x165CKqmIe1e1
+!
+aaa new-model
+!
+!
+aaa group server radius EPCUK
+ server-private 10.10.10.2 auth-port 1812 key 7 0002450A0C0E3E0C5C0F59162E28445310220410247C2B2A001C2738311006
+ ip radius source-interface Vlan1
+!
+aaa authentication login default local
+aaa authentication login vpn_xauth_m1_1 local
+aaa authentication login sslvpn local
+aaa authentication login userauthen local
+aaa authentication login AUTHE group radius
+aaa authentication login ssl_ent group EPCUK
+aaa authorization exec default local 
+aaa authorization network vpn_group_ml_1 local 
+aaa authorization network groupauthor local 
+!
+!
+!
+!
+!
+aaa session-id common
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip bootp server
+no ip domain lookup
+ip domain name epochcapital.com.au
+ip name-server 10.10.10.2
+ip inspect name fw tcp
+ip inspect name fw udp
+ip inspect name fw icmp router-traffic
+ip cef
+ipv6 multicast rpf use-bgp
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+cts logging verbose
+!
+crypto pki trustpoint TP-self-signed-264211109
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-264211109
+ revocation-check none
+ rsakeypair TP-self-signed-264211109
+!
+crypto pki trustpoint godaddy.com
+ enrollment terminal pem
+ revocation-check none
+!
+crypto pki trustpoint epochcapital.com.au
+ enrollment pkcs12
+ revocation-check none
+ rsakeypair epochcapital.com.au
+!
+!
+crypto pki certificate chain TP-self-signed-264211109
+ certificate self-signed 01 nvram:IOS-Self-Sig#1.cer
+crypto pki certificate chain godaddy.com
+ certificate ca 00 nvram:GoDaddyRootC#0CA.cer
+crypto pki certificate chain epochcapital.com.au
+ certificate 2B95939FFCC770 nvram:GoDaddySecur#C770.cer
+ certificate ca 07 nvram:GoDaddyRootC#7CA.cer
+license udi pid CISCO1921/K9 sn FCZ1621C1LJ
+!
+!
+username ADMIN privilege 0 secret 5 $1$/PU7$5oBQvdAAoUwOSOoBzykY41
+username SCP privilege 15 password 7 124D1627064A1B0C2D3875
+!
+redundancy
+!
+!
+!
+!
+!
+track 4 ip sla 4 reachability
+ delay down 15 up 10
+!
+track 5 ip sla 1 reachability
+ delay down 15 up 10
+!
+track 6 ip sla 2 reachability
+ delay down 15 up 10
+!
+track 7 ip sla 3 reachability
+ delay down 15 up 10
+!
+ip scp server enable
+!
+policy-map SHAPING
+ class class-default
+  shape average 22000000
+!
+! 
+crypto logging session
+crypto logging ikev2
+!
+crypto vpn anyconnect usbflash0:/webvpn/anyconnect-linux-64-3.1.06073-k9.pkg sequence 1
+!
+crypto vpn anyconnect usbflash0:/webvpn/anyconnect-win-3.1.06073-k9.pkg sequence 2
+!
+crypto vpn anyconnect usbflash0:/webvpn/anyconnect-macosx-i386-3.1.06073-k9.pkg sequence 3
+!
+crypto isakmp policy 1
+ encr aes
+ hash md5
+ authentication pre-share
+ group 2
+!
+crypto isakmp policy 2
+ encr aes
+ authentication pre-share
+ group 2
+!
+crypto isakmp policy 3
+ encr 3des
+ authentication pre-share
+ group 2
+crypto isakmp key !nt3r@ct!v3d@t@ep0ch address 69.31.104.220   no-xauth
+crypto isakmp key bcKbpCrbH99e address 212.95.231.226  no-xauth
+crypto isakmp key H3r5h3y4u address 84.207.255.130  no-xauth
+crypto isakmp key SAmic0w0r2upt08susn&mFW&v!YhkI address 203.116.5.106   no-xauth
+crypto isakmp key e9m60FVA!5cd%GI$ address 203.192.136.134 no-xauth
+crypto isakmp key gw*lyMm9pjP5l4YdV4&D5HioOH7W*r address 202.161.69.66   no-xauth
+crypto isakmp key eoJCV1c8d4i%6D&T address 209.112.22.148  no-xauth
+!
+crypto isakmp client configuration group CCLIENT-ADMIN-VPN1
+ key !^o4^bE^JK7WWrdb
+ dns 10.10.10.2
+ domain epochcapital.com.au
+ pool VPN-Pool
+ acl EPCUK-RemoteVPN
+ max-users 25
+!
+crypto isakmp client configuration group CCLIENT-TRADER-VPN
+ key CuzU1l7fW1!AsFos$WRe
+ dns 10.10.10.2
+ domain epochcapital.com.au
+ pool VPN-Pool
+ acl EPCUK-RemoteVPN-Trader
+ max-users 25
+!
+!
+crypto ipsec transform-set AES-SHA esp-aes esp-sha-hmac 
+ mode tunnel
+crypto ipsec transform-set AES-SHA512 esp-aes esp-sha512-hmac 
+ mode tunnel
+crypto ipsec transform-set 3DES-SHA esp-3des esp-sha-hmac 
+ mode tunnel
+!
+!
+!
+crypto dynamic-map dynmap 10
+ set security-association lifetime seconds 86400
+ set transform-set AES-SHA 
+ reverse-route
+!
+!
+crypto map EPCUK client authentication list AUTHE
+crypto map EPCUK isakmp authorization list groupauthor
+crypto map EPCUK client configuration address respond
+crypto map EPCUK 1 ipsec-isakmp 
+ description VPN to ALC
+ set peer 203.192.136.134
+ set transform-set AES-SHA 
+ set pfs group2
+ match address EPCUK-ALC
+crypto map EPCUK 2 ipsec-isakmp 
+ description VPN to ID
+ set peer 69.31.104.220
+ set transform-set AES-SHA 
+ set pfs group2
+ match address EPCUK-ID
+crypto map EPCUK 3 ipsec-isakmp 
+ description VPN to EPCAU
+ set peer 202.161.69.66
+ set transform-set AES-SHA512 
+ set pfs group2
+ match address EPCUK-EPCAU
+crypto map EPCUK 4 ipsec-isakmp 
+ description VPN tunnel to ASPUK
+ set peer 212.95.231.226
+ set security-association lifetime seconds 28800
+ set transform-set 3DES-SHA 
+ match address EPCUK-ASPUK
+crypto map EPCUK 5 ipsec-isakmp 
+ description VPN to OTFR2
+ set peer 84.207.255.130
+ set security-association lifetime seconds 28800
+ set transform-set AES-SHA 
+ match address EPCUK_Cisco1-OTFR2
+crypto map EPCUK 6 ipsec-isakmp 
+ description VPN to EPSGX
+ set peer 203.116.5.106
+ set transform-set AES-SHA512 
+ set pfs group2
+ match address EPCUK-EPSGX
+crypto map EPCUK 7 ipsec-isakmp 
+ ! Incomplete
+ description VPN to MX
+ set peer 209.112.22.148
+ set transform-set AES-SHA 
+ set pfs group2
+ match address ALC-MX
+crypto map EPCUK 250 ipsec-isakmp dynamic dynmap 
+!
+!
+!
+!
+!
+interface Loopback1
+ description for_nat_redirect
+ ip address 10.20.6.1 255.255.255.252
+ ip nat inside
+ ip virtual-reassembly in
+!
+interface Tunnel1
+ description GRE Tunnel to EPCAU
+ ip address 10.20.0.46 255.255.255.252
+ ip mtu 1398
+ ip virtual-reassembly in
+ ip ospf cost 4000
+ keepalive 10 3
+ tunnel source GigabitEthernet0/0
+ tunnel destination 202.161.69.66
+!
+interface Tunnel2
+ description GRE Tunnel to ALC
+ ip address 10.20.0.50 255.255.255.252
+ ip mtu 1398
+ ip virtual-reassembly in
+ ip ospf cost 3000
+ keepalive 10 3
+ tunnel source GigabitEthernet0/0
+ tunnel destination 203.192.136.134
+!
+interface Tunnel3
+ description GRE Tunnel EPSGX
+ ip address 10.20.0.22 255.255.255.252
+ ip virtual-reassembly in
+ shutdown
+ keepalive 10 3
+ tunnel source GigabitEthernet0/0
+ tunnel destination 203.116.5.106
+!
+interface Embedded-Service-Engine0/0
+ no ip address
+ shutdown
+!
+interface GigabitEthernet0/0
+ description Virgin One
+ ip address 194.168.59.210 255.255.255.252
+ ip access-group incoming_pub in
+ no ip redirects
+ no ip proxy-arp
+ ip flow ingress
+ ip flow egress
+ ip nat outside
+ ip inspect fw out
+ ip virtual-reassembly in
+ ip policy route-map nat_redirect
+ duplex full
+ speed 100
+ no cdp enable
+ crypto map EPCUK
+ service-policy output SHAPING
+!
+interface GigabitEthernet0/1
+ description TMX_ATRIUM VPN WAN Interface
+ ip address 194.168.59.213 255.255.255.252
+ ip access-group TMX_ATRIUM in
+ no ip proxy-arp
+ ip flow ingress
+ ip flow egress
+ duplex full
+ speed 100
+!
+interface GigabitEthernet0/0/0
+ switchport mode trunk
+ no ip address
+!
+interface GigabitEthernet0/0/1
+ switchport mode trunk
+ no ip address
+!
+interface GigabitEthernet0/0/2
+ switchport mode trunk
+ no ip address
+!
+interface GigabitEthernet0/0/3
+ switchport access vlan 2
+ no ip address
+ duplex full
+ speed 100
+!
+interface Vlan1
+ ip address 10.10.15.201 255.255.255.0
+ ip nat inside
+ ip virtual-reassembly in
+ standby 1 ip 10.10.15.1
+ standby 1 timers 1 3
+ standby 1 priority 130
+ standby 1 preempt
+!
+interface Vlan2
+ description TMX_ATRIUM LAN Interface
+ ip address 10.20.5.1 255.255.255.0
+ ip access-group TMX_ATRIUM_LAN in
+!
+interface Vlan100
+ ip address 10.10.22.201 255.255.255.0
+ standby 1 ip 10.10.22.1
+ standby 1 timers 1 3
+ standby 1 priority 140
+ standby 1 preempt
+!
+router ospf 1
+ router-id 10.10.15.201
+ redistribute static subnets
+ passive-interface default
+ no passive-interface Tunnel1
+ no passive-interface Tunnel2
+ no passive-interface Tunnel3
+ no passive-interface Vlan1
+ network 10.10.3.0 0.0.0.255 area 0
+ network 10.10.15.201 0.0.0.0 area 0
+ network 10.10.22.201 0.0.0.0 area 0
+ network 10.20.0.22 0.0.0.0 area 0
+ network 10.20.0.46 0.0.0.0 area 0
+ network 10.20.0.50 0.0.0.0 area 0
+ default-information originate metric 100 metric-type 1
+!
+ip local pool VPN-EPCUK-IT-POOL 10.10.3.1 10.10.3.62
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+ip nat inside source list NATTING-List interface GigabitEthernet0/0 overload
+ip nat inside source static tcp 10.10.15.2 5001 interface GigabitEthernet0/0 5001
+ip nat inside source static udp 10.10.15.2 5001 interface GigabitEthernet0/0 5001
+ip route 10.38.38.10 255.255.255.255 194.168.59.209 track 4
+ip route 0.0.0.0 0.0.0.0 194.168.59.209 track 5
+ip route 10.249.1.0 255.255.255.0 194.168.59.209 track 6
+ip route 10.200.1.64 255.255.255.192 84.207.255.130
+ip route 10.249.1.1 255.255.255.255 194.168.59.209
+ip route 10.249.17.0 255.255.255.0 194.168.59.209
+ip route 10.249.17.1 255.255.255.255 194.168.59.209
+ip route 69.31.104.220 255.255.255.255 194.168.59.209
+ip route 81.20.15.41 255.255.255.255 10.20.5.2
+ip route 81.20.15.42 255.255.255.255 10.20.5.2
+ip route 81.20.15.43 255.255.255.255 10.20.5.2
+ip route 81.20.15.44 255.255.255.255 10.20.5.2
+ip route 84.207.255.130 255.255.255.255 GigabitEthernet0/0
+ip route 202.161.69.66 255.255.255.255 194.168.59.209
+ip route 203.192.136.134 255.255.255.255 194.168.59.209
+ip route 203.213.99.110 255.255.255.255 194.168.59.209
+ip route 209.112.22.148 255.255.255.255 194.168.59.209
+!
+ip access-list extended ABC
+ deny   ip any host 194.168.59.214
+ip access-list extended ALC-ID
+ permit ip host 194.168.59.210 10.249.17.0 0.0.0.255
+ip access-list extended ALC-MX
+ip access-list extended EPCUK-ALC
+ permit ip host 194.168.59.210 host 203.192.136.134
+ip access-list extended EPCUK-ASPUK
+ permit ip host 194.168.59.210 host 10.38.38.10
+ip access-list extended EPCUK-EPCAU
+ permit ip host 194.168.59.210 host 202.161.69.66
+ip access-list extended EPCUK-EPSGX
+ permit ip host 194.168.59.210 host 203.116.5.106
+ip access-list extended EPCUK-ID
+ permit ip host 194.168.59.210 10.249.1.0 0.0.0.255
+ip access-list extended EPCUK-OTFR2
+ permit ip host 194.168.59.210 host 84.207.255.130
+ip access-list extended EPCUK-RemoteVPN
+ remark SPLIT-TUNNEL ACCESS FOR ADMIN USERS
+ permit ip 10.0.0.0 0.255.255.255 10.10.3.0 0.0.0.255
+ip access-list extended EPCUK-RemoteVPN-Trader
+ remark Remote Access for Prop Traders
+ permit ip 10.225.244.192 0.0.0.31 10.10.3.0 0.0.0.255
+ permit ip 10.225.244.224 0.0.0.31 10.10.3.0 0.0.0.255
+ permit ip 81.20.15.0 0.0.0.255 10.10.3.0 0.0.0.255
+ permit ip host 10.10.15.50 10.10.3.0 0.0.0.255
+ permit ip host 10.10.23.11 10.10.3.0 0.0.0.255
+ip access-list extended EPCUK-VPN-IT
+ permit ip 10.10.3.0 0.0.0.63 10.10.10.0 0.0.0.255
+ permit ip 10.10.3.0 0.0.0.63 10.129.1.0 0.0.0.255
+ permit ip 10.10.3.0 0.0.0.63 10.10.15.0 0.0.0.255
+ip access-list extended EPCUK_Cisco1-OTFR2
+ permit ip host 194.168.59.210 10.200.1.64 0.0.0.63
+ip access-list extended NATTING-List
+ deny   ip 10.0.0.0 0.255.255.255 10.10.3.0 0.0.0.255
+ permit ip 10.10.15.0 0.0.0.255 any
+ permit ip 10.20.6.0 0.0.0.255 any
+ permit ip 10.10.3.0 0.0.0.255 any
+ip access-list extended SSH-ACCESS
+ permit tcp host 10.10.10.2 any eq 22 log
+ permit tcp host 10.10.15.2 any eq 22 log
+ permit tcp host 10.129.1.21 any eq 22 log
+ permit tcp host 10.10.10.20 any eq 22 log
+ permit tcp host 10.10.24.2 any eq 22 log
+ip access-list extended TMX_ATRIUM
+ deny   ip any 10.0.0.0 0.255.255.255
+ permit ip any any
+ip access-list extended TMX_ATRIUM_LAN
+ permit tcp host 81.20.15.41 10.10.15.0 0.0.0.255 established
+ permit tcp host 81.20.15.41 10.10.3.0 0.0.0.255 established
+ permit tcp host 81.20.15.42 10.10.15.0 0.0.0.255 established
+ permit tcp host 81.20.15.42 10.10.3.0 0.0.0.255 established
+ permit tcp host 81.20.15.43 10.10.15.0 0.0.0.255 established
+ permit tcp host 81.20.15.43 10.10.3.0 0.0.0.255 established
+ permit tcp host 81.20.15.44 10.10.15.0 0.0.0.255 established
+ permit tcp host 81.20.15.44 10.10.3.0 0.0.0.255 established
+ deny   ip any any
+ip access-list extended incoming_pub
+ permit udp any host 194.168.59.210 eq non500-isakmp
+ permit udp any host 194.168.59.214 eq non500-isakmp
+ permit udp any host 194.168.59.210 eq isakmp
+ permit udp any host 194.168.59.214 eq isakmp
+ permit ahp any host 194.168.59.210
+ permit ahp any host 194.168.59.214
+ permit esp any host 194.168.59.210
+ permit esp any host 194.168.59.214
+ permit icmp any host 194.168.59.210
+ permit icmp any host 194.168.59.214
+ permit tcp host 130.0.225.82 host 194.168.59.214 eq 22
+ permit tcp host 83.151.112.18 host 194.168.59.214 eq 22
+ permit tcp any host 194.168.59.210 eq www
+ permit tcp any host 194.168.59.210 eq 443
+ deny   ip any any
+ip access-list extended nat_redirect
+ permit ip 10.10.3.0 0.0.0.255 10.249.1.0 0.0.0.255
+ permit ip 10.10.3.0 0.0.0.255 10.249.17.0 0.0.0.255
+ permit ip 10.10.3.0 0.0.0.255 10.129.1.0 0.0.0.255
+ permit ip 10.10.3.0 0.0.0.255 10.10.23.0 0.0.0.255
+!
+ip radius source-interface Vlan1 
+ip sla auto discovery
+ip sla 1
+ icmp-echo 194.168.59.209 source-interface GigabitEthernet0/0
+ threshold 400
+ frequency 5
+ip sla schedule 1 life forever start-time now
+ip sla 2
+ icmp-echo 10.249.1.1 source-interface GigabitEthernet0/0
+ threshold 400
+ frequency 5
+ip sla schedule 2 life forever start-time now
+ip sla 3
+ icmp-echo 10.249.17.1 source-interface GigabitEthernet0/0
+ threshold 400
+ frequency 5
+ip sla schedule 3 life forever start-time now
+ip sla 4
+ icmp-echo 10.38.38.10 source-interface GigabitEthernet0/0
+ threshold 400
+ frequency 5
+ip sla schedule 4 life forever start-time now
+ip sla responder
+logging history size 500
+logging facility local3
+logging host 10.10.10.173
+logging host 10.10.10.5
+!
+route-map nat_redirect permit 10
+ match ip address nat_redirect
+ set interface Loopback1
+!
+!
+snmp-server community 3p0chSNMP RO 1
+snmp-server enable traps vstack operation
+access-list 1 permit 10.10.10.5
+access-list 1 deny   any
+access-list 101 permit tcp host 10.10.10.82 any eq 22 log
+access-list 101 permit tcp host 10.10.10.20 any eq 22 log
+access-list 101 permit tcp host 10.10.10.2 any eq 22 log
+access-list 101 permit tcp host 10.10.15.2 any eq 22 log
+access-list 101 deny   ip any any log
+access-list 130 permit ip 10.10.15.0 0.0.0.255 any
+!
+radius server EPCAU
+ address ipv4 10.10.10.2 auth-port 1812 acct-port 1646
+ timeout 20
+ key 7 0002450A0C0E3E0C5C0F59162E28445310220410247C2B2A001C2738311006
+!
+!
+!
+control-plane
+!
+!
+banner login 
+
+####################################################################################
+#                                                                                  #
+#       This is an official computer system and is the property of Epoch           #
+#       Capital. It is for authorized users only. Unauthorized users               #
+#       are prohibited. Users (authorized or unauthorized) have no explicit        #
+#       or implicit expectation of privacy. Any or all uses of this system         #
+#       may be subject to one or more of the following actions: interception,      #
+#       monitoring, recording, auditing, inspection and disclosing to security     #
+#       personnel and law enforcement personnel, as well as authorized             #
+#       officials of other agencies, both domestic and foreign. By using this      #
+#       system, the user consents to these actions. Unauthorized or improper       #
+#       use of this system may result in administrative disciplinary action        #
+#       and civil and criminal penalties. By accessing this system you             #
+#       indicate your awareness of and consent to these terms and conditions       #
+#       of use. Discontinue access immediately if you do not agree to the          #
+#       conditions stated in this notice.                                          #
+#                                                                                  #
+####################################################################################
+
+
+!
+line con 0
+line aux 0
+line 2
+ no activation-character
+ no exec
+ transport preferred none
+ transport output pad telnet rlogin lapb-ta mop udptn v120 ssh
+ stopbits 1
+line vty 0 4
+ access-class SSH-ACCESS in
+ exec-timeout 60 0
+ privilege level 0
+ logging synchronous
+ transport input ssh
+line vty 5 15
+ transport input none
+!
+scheduler allocate 20000 1000
+ntp server 10.10.15.2
+!
+!
+webvpn gateway gateway_1
+ hostname vpn-london.epochcapital.com.au
+ ip address 194.168.59.210 port 443  
+ http-redirect port 80
+ ssl trustpoint epochcapital.com.au
+ inservice
+ !
+webvpn context EPCUK-VPN
+ title "Epoch Capital"
+ login-photo file EPOCH-Icon-Dark-RGB.png
+ logo file epoch.padded.png
+ color #4b5c65
+ secondary-color #4b5c65
+ login-message "Epoch Capital Unauthorized Access Prohibited"
+ aaa authentication list ssl_ent
+ gateway gateway_1
+ max-users 50
+ !
+ ssl authenticate verify all
+ inservice
+ !
+ policy group Default
+   banner "Your in the wrong Policy, Please contact Epoch Support"
+   svc default-domain "epochcapital.com.au"
+ !
+ policy group IT-Policy
+   functions file-access
+   functions file-browse
+   functions file-entry
+   functions svc-enabled
+   filter tunnel EPCUK-VPN-IT
+   svc address-pool "VPN-EPCUK-IT-POOL" netmask 255.255.255.192
+   svc default-domain "epochcapital.com.au"
+   svc keep-client-installed
+   svc split include 10.10.10.0 255.255.255.0
+   svc split include 10.129.1.0 255.255.255.0
+   svc split include 10.10.24.0 255.255.255.128
+   svc split include 10.10.15.0 255.255.255.0
+   svc dns-server primary 10.10.15.2
+   svc dns-server secondary 10.10.10.2
+ default-group-policy Default
+!
+end
