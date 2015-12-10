@@ -1,5 +1,7 @@
 class base::users {
-    accounts::user { 'epoch':
-      shell   => '/bin/bash',
+    class { '::accounts':
+      user {'epoch':
+        shell   => '/bin/bash',
+      }
     }
 }
