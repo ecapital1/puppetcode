@@ -1,4 +1,4 @@
 class base::users {
-    class { '::accounts':
+    accounts::user { 'epoch':
     }
 }
