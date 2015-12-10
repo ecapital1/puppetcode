@@ -1,5 +1,5 @@
 class base::users {
-  class { '::accounts':
-  
+  class { 'accounts':
+
   }
 }
