@@ -3,7 +3,7 @@ class base::sssd {
     config => {
       'sssd' => {
         'config_file_version' => '2',
-        'services' => [ 'nss', 'pam' ],
+        'services' => [ 'nss','pam' ],
         'domains'  => 'LDAP',
         },
       'domain/LDAP' => {
