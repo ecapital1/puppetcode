@@ -20,7 +20,7 @@ class base::sssd {
         'chpass_provider'         => 'ldap',
         'auth_provider'           => 'ldap',
         'access_provider'         => 'simple',
-        'simple_allow_groups'     => 'ITAdmin, appsupport, developer',
+        'simple_allow_groups'     => hiera ('sssd_simple_allow_groups'),
         'simple_allow_users'      => hiera ('sssd_simple_allow_users'),
         },
       }
