@@ -8,7 +8,5 @@ accounts::user { 'jeff':
   groups   => [
     'admin',
   ],
-  uid      => 1112,
-  gid      => 1112,
   locked   => true,
 }
