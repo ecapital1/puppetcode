@@ -21,7 +21,7 @@ class base::sssd {
         'auth_provider'           => 'ldap',
         'access_provider'         => 'simple',
         'simple_allow_groups'     => 'ITAdmin, appsupport, developer',
-        'simple_allow_users'      => 'epoch, appsupport',
+        'simple_allow_users'      => hiera ('sssd_simple_allow_users'),
         },
       }
     }
