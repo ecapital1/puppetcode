@@ -6,4 +6,7 @@ class base::installpackages {
         ensure => installed,
       }
     }
+    file {"/var/run/bacula/":
+      ensure => 'directory',
+    }
 }
