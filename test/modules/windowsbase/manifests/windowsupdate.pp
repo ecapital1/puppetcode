@@ -15,9 +15,9 @@ scheduled_task { 'windowsupdate':
       provider  => powershell,
       #arguments => '/flags /to /pass',
       trigger   => {
-        schedule   => monthly,
+        schedule   => daily,
         every      => 1,
-        start_date => '2015-11-30',
+        start_date => '2016-01-11',
         start_time => '08:00',
       }
   }
