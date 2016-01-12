@@ -48,6 +48,7 @@ class base::repos {
 							type            => yast2,
 							keeppackages    => 0,
 					}
+				}
 			}
 		}
 	}
