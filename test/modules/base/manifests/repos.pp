@@ -43,6 +43,7 @@ class base::repos {
 							baseurl         => 'ftp://10.10.10.81/Epoch-Repo',
 							enabled         => 1,
 							autorefresh     => 1,
+							gpgcheck				=> 0,
 							name            => 'Epoch-Repo',
 							path            => '/',
 							type            => rpm-md,
