@@ -39,6 +39,15 @@ class base::repos {
 							type            => yast2,
 							keeppackages    => 0,
 						}
+						zypprepo { 'SLES11SP3':
+							baseurl         => 'ftp://10.10.10.81/SLES-11-SP3/DVD1',
+							enabled         => 1,
+							autorefresh     => 1,
+							name            => 'SLES11SP3',
+							path            => '/',
+							type            => yast2,
+							keeppackages    => 0,
+						}
 						zypprepo { 'Epoch-Repo':
 							baseurl         => 'ftp://10.10.10.81/Epoch-Repo',
 							enabled         => 1,
