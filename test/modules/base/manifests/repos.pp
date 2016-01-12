@@ -45,7 +45,7 @@ class base::repos {
 							autorefresh     => 1,
 							name            => 'Epoch-Repo',
 							path            => '/',
-							type            => yast2,
+							type            => rpm-md,
 							keeppackages    => 0,
 					}
 				}
