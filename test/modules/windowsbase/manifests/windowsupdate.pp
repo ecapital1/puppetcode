@@ -18,7 +18,7 @@ scheduled_task { 'windowsupdate':
         schedule   => daily,
         every      => 1,
         start_date => '2016-01-11',
-        start_time => '08:00',
+        start_time => '12:00',
       }
   }
 
