@@ -14,12 +14,12 @@ scheduled_task { 'windowsupdate':
       command   => 'c:/puppetscripts/winupdate.ps1',
       provider  => powershell,
       #arguments => '/flags /to /pass',
-      trigger   => {
-        schedule   => daily,
-        every      => 1,
-        start_date => '2016-01-11',
-        start_time => '12:00',
-      }
+    #  trigger   => {
+    #    schedule   => daily,
+    #    every      => 1,
+    #    start_date => '2016-01-11',
+    #    start_time => '12:00',
+    #  }
   }
 
   reboot {'after update':
