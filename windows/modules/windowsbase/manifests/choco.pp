@@ -24,5 +24,28 @@ class windowsbase::choco {
         ensure   => latest,
         provider => 'chocolatey',
   }
-
+  package { 'wireshark':
+        ensure   => latest,
+        provider => 'chocolatey',
+  }
+  package { 'ccleaner':
+        ensure   => latest,
+        provider => 'chocolatey',
+  }
+  package { 'atom':
+        ensure   => latest,
+        provider => 'chocolatey',
+  }
+  package { 'powershell':
+        ensure   => latest,
+        provider => 'chocolatey',
+  }
+  package { 'dotnet4.5':
+        ensure   => latest,
+        provider => 'chocolatey',
+  }
+  package { 'vcredist2013':
+        ensure   => latest,
+        provider => 'chocolatey',
+  }
 }

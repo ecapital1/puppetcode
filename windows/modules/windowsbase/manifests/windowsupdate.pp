@@ -7,12 +7,12 @@ file { 'c:/puppetscripts':
   	group => 'Administrators',
 }
 
-file { 'c:/puppetscripts/winupdate.ps1':
+file { 'c:/puppetscripts/winupdate2.ps1':
   ensure => file,
   mode => '0660',
   owner => 'admin',
   group => 'Administrators',
-  source => "puppet:///modules/windowsbase/winupdate.ps1",
+  source => "puppet:///modules/windowsbase/winupdate2.ps1",
 }
 
 exec {"windows_update":
