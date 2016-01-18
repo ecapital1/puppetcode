@@ -1,9 +1,20 @@
 #Checking for available updates
 Write-Host "  Checking for available updates... Please wait!" -ForegroundColor 'Yellow'
-$UpdateSession = New-Object -ComObject Microsoft.Update.Session
-$SearchResult = $UpdateSession.CreateUpdateSearcher().Search($criteria).Updates | ? {$_.Title -notmatch $skipUpdates}
-$SearchResult = $SearchResult | Sort-Object LastDeploymentChangeTime -Descending
+
+$Session = New-Object -ComObject Microsoft.Update.Session
+$UServiceManager = New-Object -ComObject Microsoft.Update.ServiceManager
+$UService = $UServiceManager.AddScanPackageService("Offline Sync Service", "c:\wsusscn2.cab")
+$Searcher = $Session.CreateUpdateSearcher()
+$Searcher.ServerSelection = 3 $Searcher.ServiceID = $UService.ServiceID
+$Criteria = "IsInstalled=0 and Type='Software'"
+$SearchResult = $Searcher.Search($Criteria)
+$SearchResult.Updates
 $totalUpdates = $SearchResult.Count
+
+#$UpdateSession = New-Object -ComObject Microsoft.Update.Session
+#$SearchResult = $UpdateSession.CreateUpdateSearcher().Search($criteria).Updates | ? {$_.Title -notmatch $skipUpdates}
+#$SearchResult = $SearchResult | Sort-Object LastDeploymentChangeTime -Descending
+#$totalUpdates = $SearchResult.Count
 
 ForEach ($Update in $SearchResult) {
         If ($totalUpdates -eq $null) { $totalUpdates = 1}
