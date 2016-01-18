@@ -20,7 +20,7 @@ class base::sudoers {
   #      priority => 4,
   #      content  => "%developer ALL = (ALL) NOPASSWD:/bin/su - epoch"
   #    }
-    }
+  #  }
     'rdb': {
       sudo::conf { 'rdb':
         priority => 7,
