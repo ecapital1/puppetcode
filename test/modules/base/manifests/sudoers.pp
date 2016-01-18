@@ -15,11 +15,11 @@ class base::sudoers {
         content  => "%er ALL = (ALL) NOPASSWD:/bin/su - er"
         }
       }
-    'developer': {
-      sudo::conf { 'developer':
-        priority => 4,
-        content  => "%developer ALL = (ALL) NOPASSWD:/bin/su - epoch"
-      }
+  #  'developer': {
+  #    sudo::conf { 'developer':
+  #      priority => 4,
+  #      content  => "%developer ALL = (ALL) NOPASSWD:/bin/su - epoch"
+  #    }
     }
     'rdb': {
       sudo::conf { 'rdb':
@@ -57,6 +57,10 @@ class base::sudoers {
   sudo::conf { 'epoch':
     priority => 3,
     content  => "epoch ALL = (ALL) NOPASSWD:/opt/epoch/bin/tshark -i em1,/opt/epoch/bin/tcpdump ,/usr/bin/pkill tcpdump,/usr/bin/cset"
+  }
+  sudo::conf { 'developer':
+    priority => 11,
+    content  => "%developer ALL = (ALL) NOPASSWD:/bin/su - epoch"
   }
 
 }
