@@ -1,4 +1,4 @@
 # role.rb
 Facter.add('role') do
-  setcode 'cat /etc/role'
+  setcode 'contents = File.readlines("/etc/role")'
 end
