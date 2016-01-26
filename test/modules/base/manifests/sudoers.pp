@@ -27,11 +27,11 @@ class base::sudoers {
         content  => "%rdb ALL = (ALL) NOPASSWD:/bin/su - rdb"
       }
     }
-    'fcs': {
-      sudo::conf { 'fcs':
-        priority => 8,
-        content  => "%fcs ALL = (ALL) NOPASSWD:/bin/su - fcs"
-      }
+  #  'fcs': {
+  #    sudo::conf { 'fcs':
+  #      priority => 8,
+  #      content  => "%fcs ALL = (ALL) NOPASSWD:/bin/su - fcs"
+  #    }
     }
     'fst': {
       sudo::conf { 'fst':
