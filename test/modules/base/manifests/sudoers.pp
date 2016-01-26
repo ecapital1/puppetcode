@@ -32,7 +32,7 @@ class base::sudoers {
   #      priority => 8,
   #      content  => "%fcs ALL = (ALL) NOPASSWD:/bin/su - fcs"
   #    }
-    }
+  #   }
     'fst': {
       sudo::conf { 'fst':
         priority => 9,
