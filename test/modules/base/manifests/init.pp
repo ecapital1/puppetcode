@@ -10,6 +10,6 @@ class base {
 	include base::dns
 	include base::syslog
 	include base::ssh
-	#include base::sssd
+	include base::sssd
 	#include base::users
 }
