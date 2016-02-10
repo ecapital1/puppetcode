@@ -1,0 +1,682 @@
+[0;36mDebug: Runtime environment: puppet_version=4.2.3, ruby_version=2.1.7, run_mode=user, default_encoding=UTF-8[0m
+[0;36mDebug: Evicting cache entry for environment 'test'[0m
+[0;36mDebug: Caching environment 'test' (ttl = 0 sec)[0m
+[0;36mDebug: Evicting cache entry for environment 'test'[0m
+[0;36mDebug: Caching environment 'test' (ttl = 0 sec)[0m
+[0;36mDebug: Loading external facts from /opt/puppetlabs/puppet/cache/facts.d[0m
+[0;32mInfo: Loading facts[0m
+[0;36mDebug: Loading facts from /etc/puppetlabs/puppet/environments/test/modules/facts/lib/facter/hello.rb[0m
+[0;36mDebug: Loading facts from /etc/puppetlabs/puppet/environments/test/modules/facts/lib/facter/role.rb[0m
+[0;32mInfo: Loading facts[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/modules/pe_concat/lib/facter/pe_concat_basedir.rb[0m
+[0;32mInfo: Loading facts[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/modules/pe_razor/lib/facter/pe_razor_server_version.rb[0m
+[0;32mInfo: Loading facts[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/modules/pe_staging/lib/facter/staging_http_get.rb[0m
+[0;32mInfo: Loading facts[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/modules/puppet_enterprise/lib/facter/pe_build.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/modules/puppet_enterprise/lib/facter/custom_auth_conf.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/modules/puppet_enterprise/lib/facter/pe_version.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/modules/puppet_enterprise/lib/facter/windows.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/modules/puppet_enterprise/lib/facter/puppet_files_dir_present.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/modules/puppet_enterprise/lib/facter/platform_tag.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/modules/puppet_enterprise/lib/facter/pe_server_version.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/modules/puppet_enterprise/lib/facter/platform_symlink_writable.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/modules/puppet_enterprise/lib/facter/aio_agent_build.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/modules/puppet_enterprise/lib/facter/aio_agent_version.rb[0m
+[0;32mInfo: Loading facts[0m
+[0;36mDebug: Loading facts from /etc/puppetlabs/puppet/environments/production/modules/stdlib/lib/facter/facter_dot_d.rb[0m
+[0;36mDebug: Loading facts from /etc/puppetlabs/puppet/environments/production/modules/stdlib/lib/facter/pe_version.rb[0m
+[0;36mDebug: Loading facts from /etc/puppetlabs/puppet/environments/production/modules/stdlib/lib/facter/puppet_vardir.rb[0m
+[0;36mDebug: Loading facts from /etc/puppetlabs/puppet/environments/production/modules/stdlib/lib/facter/root_home.rb[0m
+[0;32mInfo: Loading facts[0m
+[0;36mDebug: Loading facts from /etc/puppetlabs/puppet/environments/production/modules/python/lib/facter/pip_version.rb[0m
+[0;36mDebug: Loading facts from /etc/puppetlabs/puppet/environments/production/modules/python/lib/facter/python_version.rb[0m
+[0;36mDebug: Loading facts from /etc/puppetlabs/puppet/environments/production/modules/python/lib/facter/virtualenv_version.rb[0m
+[0;32mInfo: Loading facts[0m
+[0;36mDebug: Loading facts from /etc/puppetlabs/puppet/environments/production/modules/sudo/lib/facter/sudoversion.rb[0m
+[0;32mInfo: Loading facts[0m
+[0;36mDebug: Loading facts from /etc/puppetlabs/puppet/environments/production/modules/rsyslog/lib/facter/rsyslog_version.rb[0m
+[0;32mInfo: Loading facts[0m
+[0;36mDebug: Loading facts from /etc/puppetlabs/puppet/environments/test/modules/facts/lib/facter/hello.rb[0m
+[0;36mDebug: Loading facts from /etc/puppetlabs/puppet/environments/test/modules/facts/lib/facter/role.rb[0m
+[0;32mInfo: Loading facts[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/cache/lib/facter/aio_agent_build.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/cache/lib/facter/aio_agent_version.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/cache/lib/facter/custom_auth_conf.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/cache/lib/facter/facter_dot_d.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/cache/lib/facter/pe_build.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/cache/lib/facter/pe_concat_basedir.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/cache/lib/facter/pe_razor_server_version.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/cache/lib/facter/pe_server_version.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/cache/lib/facter/pe_version.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/cache/lib/facter/pip_version.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/cache/lib/facter/platform_symlink_writable.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/cache/lib/facter/platform_tag.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/cache/lib/facter/puppet_files_dir_present.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/cache/lib/facter/puppet_vardir.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/cache/lib/facter/python_version.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/cache/lib/facter/root_home.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/cache/lib/facter/rsyslog_version.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/cache/lib/facter/staging_http_get.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/cache/lib/facter/sudoversion.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/cache/lib/facter/virtualenv_version.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/cache/lib/facter/windows.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/cache/lib/facter/hello.rb[0m
+[0;36mDebug: Loading facts from /opt/puppetlabs/puppet/cache/lib/facter/role.rb[0m
+[0;36mDebug: Facter: fact "facterversion" has resolved to "3.1.1".[0m
+[0;36mDebug: Facter: searching "/opt/puppetlabs/facter/facts.d" for external facts.[0m
+[0;36mDebug: Facter: resolving facts from YAML file "/opt/puppetlabs/facter/facts.d/role.yaml".[0m
+[0;36mDebug: Facter: fact "role" has resolved to "mft".[0m
+[0;36mDebug: Facter: completed resolving facts from YAML file "/opt/puppetlabs/facter/facts.d/role.yaml".[0m
+[0;36mDebug: Facter: skipping external facts for "/etc/facter/facts.d": No such file or directory[0m
+[0;36mDebug: Facter: searching "/etc/puppetlabs/facter/facts.d" for external facts.[0m
+[0;36mDebug: Facter: resolving facts from YAML file "/etc/puppetlabs/facter/facts.d/role.yaml".[0m
+[0;36mDebug: Facter: fact "role" has changed from "mft" to "mft".[0m
+[0;36mDebug: Facter: completed resolving facts from YAML file "/etc/puppetlabs/facter/facts.d/role.yaml".[0m
+[0;36mDebug: Facter: searching "/opt/puppetlabs/puppet/cache/facts.d" for external facts.[0m
+[0;36mDebug: Facter: loading all custom facts.[0m
+[0;36mDebug: Facter: searching for custom facts in /etc/puppetlabs/puppet/environments/test/modules/facts/lib/facter.[0m
+[0;32mInfo: Facter: loading custom facts from /etc/puppetlabs/puppet/environments/test/modules/facts/lib/facter/hello.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /etc/puppetlabs/puppet/environments/test/modules/facts/lib/facter/role.rb.[0m
+[0;36mDebug: Facter: searching for custom facts in /opt/puppetlabs/puppet/modules/pe_concat/lib/facter.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/modules/pe_concat/lib/facter/pe_concat_basedir.rb.[0m
+[0;36mDebug: Facter: searching for custom facts in /opt/puppetlabs/puppet/modules/pe_razor/lib/facter.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/modules/pe_razor/lib/facter/pe_razor_server_version.rb.[0m
+[0;36mDebug: Facter: searching for custom facts in /opt/puppetlabs/puppet/modules/pe_staging/lib/facter.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/modules/pe_staging/lib/facter/staging_http_get.rb.[0m
+[0;36mDebug: Facter: searching for custom facts in /opt/puppetlabs/puppet/modules/puppet_enterprise/lib/facter.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/modules/puppet_enterprise/lib/facter/pe_build.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/modules/puppet_enterprise/lib/facter/custom_auth_conf.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/modules/puppet_enterprise/lib/facter/pe_version.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/modules/puppet_enterprise/lib/facter/windows.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/modules/puppet_enterprise/lib/facter/puppet_files_dir_present.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/modules/puppet_enterprise/lib/facter/platform_tag.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/modules/puppet_enterprise/lib/facter/pe_server_version.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/modules/puppet_enterprise/lib/facter/platform_symlink_writable.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/modules/puppet_enterprise/lib/facter/aio_agent_build.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/modules/puppet_enterprise/lib/facter/aio_agent_version.rb.[0m
+[0;36mDebug: Facter: searching for custom facts in /etc/puppetlabs/puppet/environments/production/modules/stdlib/lib/facter.[0m
+[0;32mInfo: Facter: loading custom facts from /etc/puppetlabs/puppet/environments/production/modules/stdlib/lib/facter/facter_dot_d.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /etc/puppetlabs/puppet/environments/production/modules/stdlib/lib/facter/pe_version.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /etc/puppetlabs/puppet/environments/production/modules/stdlib/lib/facter/puppet_vardir.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /etc/puppetlabs/puppet/environments/production/modules/stdlib/lib/facter/root_home.rb.[0m
+[0;36mDebug: Facter: searching for custom facts in /etc/puppetlabs/puppet/environments/production/modules/python/lib/facter.[0m
+[0;32mInfo: Facter: loading custom facts from /etc/puppetlabs/puppet/environments/production/modules/python/lib/facter/pip_version.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /etc/puppetlabs/puppet/environments/production/modules/python/lib/facter/python_version.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /etc/puppetlabs/puppet/environments/production/modules/python/lib/facter/virtualenv_version.rb.[0m
+[0;36mDebug: Facter: searching for custom facts in /etc/puppetlabs/puppet/environments/production/modules/sudo/lib/facter.[0m
+[0;32mInfo: Facter: loading custom facts from /etc/puppetlabs/puppet/environments/production/modules/sudo/lib/facter/sudoversion.rb.[0m
+[0;36mDebug: Facter: searching for custom facts in /etc/puppetlabs/puppet/environments/production/modules/rsyslog/lib/facter.[0m
+[0;32mInfo: Facter: loading custom facts from /etc/puppetlabs/puppet/environments/production/modules/rsyslog/lib/facter/rsyslog_version.rb.[0m
+[0;36mDebug: Facter: searching for custom facts in /opt/puppetlabs/puppet/cache/lib/facter.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/cache/lib/facter/aio_agent_build.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/cache/lib/facter/aio_agent_version.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/cache/lib/facter/custom_auth_conf.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/cache/lib/facter/facter_dot_d.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/cache/lib/facter/pe_build.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/cache/lib/facter/pe_concat_basedir.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/cache/lib/facter/pe_razor_server_version.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/cache/lib/facter/pe_server_version.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/cache/lib/facter/pe_version.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/cache/lib/facter/pip_version.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/cache/lib/facter/platform_symlink_writable.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/cache/lib/facter/platform_tag.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/cache/lib/facter/puppet_files_dir_present.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/cache/lib/facter/puppet_vardir.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/cache/lib/facter/python_version.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/cache/lib/facter/root_home.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/cache/lib/facter/rsyslog_version.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/cache/lib/facter/staging_http_get.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/cache/lib/facter/sudoversion.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/cache/lib/facter/virtualenv_version.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/cache/lib/facter/windows.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/cache/lib/facter/hello.rb.[0m
+[0;32mInfo: Facter: loading custom facts from /opt/puppetlabs/puppet/cache/lib/facter/role.rb.[0m
+[0;36mDebug: Facter: searching for custom facts in /etc/puppetlabs/puppet/environments/test/modules/facts/lib/facter.[0m
+[0;36mDebug: Facter: searching for custom facts in /opt/puppetlabs/puppet/modules/pe_concat/lib/facter.[0m
+[0;36mDebug: Facter: searching for custom facts in /opt/puppetlabs/puppet/modules/pe_razor/lib/facter.[0m
+[0;36mDebug: Facter: searching for custom facts in /opt/puppetlabs/puppet/modules/pe_staging/lib/facter.[0m
+[0;36mDebug: Facter: searching for custom facts in /opt/puppetlabs/puppet/modules/puppet_enterprise/lib/facter.[0m
+[0;36mDebug: Facter: searching for custom facts in /etc/puppetlabs/puppet/environments/production/modules/stdlib/lib/facter.[0m
+[0;36mDebug: Facter: searching for custom facts in /etc/puppetlabs/puppet/environments/production/modules/python/lib/facter.[0m
+[0;36mDebug: Facter: searching for custom facts in /etc/puppetlabs/puppet/environments/production/modules/sudo/lib/facter.[0m
+[0;36mDebug: Facter: searching for custom facts in /etc/puppetlabs/puppet/environments/production/modules/rsyslog/lib/facter.[0m
+[0;36mDebug: Facter: searching for custom facts in /etc/puppetlabs/puppet/environments/test/modules/facts/lib/facter.[0m
+[0;36mDebug: Facter: searching for custom facts in /opt/puppetlabs/puppet/cache/lib/facter.[0m
+[0;36mDebug: Facter: fact "agent_specified_environment" has resolved to "test".[0m
+[0;36mDebug: Facter: resolving operating system facts.[0m
+[0;36mDebug: Facter: resolving kernel facts.[0m
+[0;36mDebug: Facter: fact "kernel" has resolved to "Linux".[0m
+[0;36mDebug: Facter: fact "kernelrelease" has resolved to "3.13.0-67-generic".[0m
+[0;36mDebug: Facter: fact "kernelmajversion" has resolved to "3.13".[0m
+[0;36mDebug: Facter: fact "kernelversion" has resolved to "3.13.0".[0m
+[0;36mDebug: Facter: executing command: /usr/bin/lsb_release -a[0m
+[0;36mDebug: Facter: Distributor ID:	Ubuntu[0m
+[0;36mDebug: Facter: Description:	Ubuntu 14.04.3 LTS[0m
+[0;36mDebug: Facter: Release:	14.04[0m
+[0;36mDebug: Facter: Codename:	trusty[0m
+[0;36mDebug: Facter: No LSB modules are available.[0m
+[0;36mDebug: Facter: process exited with status code 0.[0m
+[0;36mDebug: Facter: fact "osfamily" has resolved to "Debian".[0m
+[0;36mDebug: Facter: fact "operatingsystemmajrelease" has resolved to "14.04".[0m
+[0;36mDebug: Facter: fact "operatingsystemrelease" has resolved to "14.04".[0m
+[0;36mDebug: Facter: fact "hardwaremodel" has resolved to "x86_64".[0m
+[0;36mDebug: Facter: fact "architecture" has resolved to "amd64".[0m
+[0;36mDebug: Facter: fact "lsbdistid" has resolved to "Ubuntu".[0m
+[0;36mDebug: Facter: fact "lsbdistcodename" has resolved to "trusty".[0m
+[0;36mDebug: Facter: fact "lsbdistdescription" has resolved to "Ubuntu 14.04.3 LTS".[0m
+[0;36mDebug: Facter: fact "lsbmajdistrelease" has resolved to "14.04".[0m
+[0;36mDebug: Facter: fact "lsbdistrelease" has resolved to "14.04".[0m
+[0;36mDebug: Facter: fact "operatingsystem" has resolved to "Ubuntu".[0m
+[0;36mDebug: Facter: fact "selinux" has resolved to false.[0m
+[0;36mDebug: Facter: fact "os" has resolved to {
+  architecture => "amd64",
+  distro => {
+    codename => "trusty",
+    description => "Ubuntu 14.04.3 LTS",
+    id => "Ubuntu",
+    release => {
+      full => "14.04",
+      major => "14.04"
+    }
+  },
+  family => "Debian",
+  hardware => "x86_64",
+  name => "Ubuntu",
+  release => {
+    full => "14.04",
+    major => "14.04"
+  },
+  selinux => {
+    enabled => false
+  }
+}.[0m
+[0;36mDebug: Facter: fact "aio_agent_build" has resolved to "1.2.7".[0m
+[0;36mDebug: Facter: fact "aio_agent_version" has resolved to "1.2.7".[0m
+[0;36mDebug: Facter: fact "common_appdata" resolved to null and will not be added.[0m
+[0;36mDebug: Facter: fact "custom_auth_conf" has resolved to "false".[0m
+[0;36mDebug: Facter: fact "hello" has resolved to "Hello, world".[0m
+[0;36mDebug: Facter: fact "puppetversion" has resolved to "4.2.3".[0m
+[0;36mDebug: Facter: fact "pe_version" resolved to null and will not be added.[0m
+[0;36mDebug: Facter: fact "is_pe" has resolved to false.[0m
+[0;36mDebug: Facter: fact "pe_build" has resolved to "2015.2.3".[0m
+[0;36mDebug: Facter: fact "pe_concat_basedir" has resolved to "/opt/puppetlabs/puppet/cache/pe_concat".[0m
+[0;36mDebug: Facter: fact "pe_major_version" resolved to null and will not be added.[0m
+[0;36mDebug: Facter: fact "pe_minor_version" resolved to null and will not be added.[0m
+[0;36mDebug: Facter: fact "pe_patch_version" resolved to null and will not be added.[0m
+[0;36mDebug: Facter: fact "pe_razor_server_version" resolved to null and will not be added.[0m
+[0;36mDebug: Facter: fact "pe_server_version" has resolved to "2015.2.3".[0m
+[0;36mDebug: Facter: fact "pip_version" resolved to null and will not be added.[0m
+[0;36mDebug: Facter: fact "platform_symlink_writable" has resolved to true.[0m
+[0;36mDebug: Facter: fact "platform_tag" has resolved to "ubuntu-14.04-amd64".[0m
+[0;36mDebug: Facter: fact "puppet_files_dir_present" has resolved to false.[0m
+[0;36mDebug: Facter: fact "puppet_vardir" has resolved to "/opt/puppetlabs/puppet/cache".[0m
+[0;36mDebug: Facter: executing command: /bin/sh -c /usr/bin/python -V 2>&1[0m
+[0;36mDebug: Facter: Python 2.7.6[0m
+[0;36mDebug: Facter: process exited with status code 0.[0m
+[0;36mDebug: Facter: fact "python2_version" has resolved to "2.7.6".[0m
+[0;36mDebug: Facter: executing command: /bin/sh -c /usr/bin/python3 -V 2>&1[0m
+[0;36mDebug: Facter: Python 3.4.3[0m
+[0;36mDebug: Facter: process exited with status code 0.[0m
+[0;36mDebug: Facter: fact "python3_version" has resolved to "3.4.3".[0m
+[0;36mDebug: Facter: executing command: /bin/sh -c /usr/bin/python -V 2>&1[0m
+[0;36mDebug: Facter: Python 2.7.6[0m
+[0;36mDebug: Facter: process exited with status code 0.[0m
+[0;36mDebug: Facter: fact "python_version" has resolved to "2.7.6".[0m
+[0;36mDebug: Facter: executing command: /bin/sh -c /usr/bin/getent passwd root[0m
+[0;36mDebug: Facter: root:x:0:0:root:/root:/bin/bash[0m
+[0;36mDebug: Facter: process exited with status code 0.[0m
+[0;36mDebug: Facter: fact "root_home" has resolved to "/root".[0m
+[0;36mDebug: Facter: executing command: /bin/sh -c /usr/bin/dpkg-query -f '${Status};${Version};' -W rsyslog 2>/dev/null[0m
+[0;36mDebug: Facter: install ok installed;7.4.4-1ubuntu2.6;[0m
+[0;36mDebug: Facter: process exited with status code 0.[0m
+[0;36mDebug: Facter: fact "rsyslog_version" has resolved to "7.4.4-1ubuntu2.6".[0m
+[0;36mDebug: Facter: fact "staging_http_get" has resolved to "curl".[0m
+[0;36mDebug: Facter: executing command: /bin/sh -c /usr/bin/sudo -V | awk '/Sudo version/ {print $3}'[0m
+[0;36mDebug: Facter: 1.8.9p5[0m
+[0;36mDebug: Facter: process exited with status code 0.[0m
+[0;36mDebug: Facter: fact "sudoversion" has resolved to "1.8.9p5".[0m
+[0;36mDebug: Facter: fact "virtualenv_version" resolved to null and will not be added.[0m
+[0;36mDebug: Facter: resolving ruby facts.[0m
+[0;36mDebug: Facter: fact "rubyplatform" has resolved to "x86_64-linux".[0m
+[0;36mDebug: Facter: fact "rubysitedir" has resolved to "/opt/puppetlabs/puppet/lib/ruby/site_ruby/2.1.0".[0m
+[0;36mDebug: Facter: fact "rubyversion" has resolved to "2.1.7".[0m
+[0;36mDebug: Facter: fact "ruby" has resolved to {
+  platform => "x86_64-linux",
+  sitedir => "/opt/puppetlabs/puppet/lib/ruby/site_ruby/2.1.0",
+  version => "2.1.7"
+}.[0m
+[0;36mDebug: Facter: resolving path facts.[0m
+[0;36mDebug: Facter: fact "path" has resolved to "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin".[0m
+[0;36mDebug: Facter: resolving EC2 facts.[0m
+[0;36mDebug: Facter: resolving virtualization facts.[0m
+[0;36mDebug: Facter: resolving desktop management interface facts.[0m
+[0;36mDebug: Facter: fact "bios_vendor" has resolved to "Phoenix Technologies LTD".[0m
+[0;36mDebug: Facter: fact "bios_version" has resolved to "6.00".[0m
+[0;36mDebug: Facter: fact "bios_release_date" has resolved to "04/14/2014".[0m
+[0;36mDebug: Facter: fact "boardmanufacturer" has resolved to "Intel Corporation".[0m
+[0;36mDebug: Facter: fact "boardproductname" has resolved to "440BX Desktop Reference Platform".[0m
+[0;36mDebug: Facter: fact "boardserialnumber" has resolved to "None".[0m
+[0;36mDebug: Facter: fact "productname" has resolved to "VMware Virtual Platform".[0m
+[0;36mDebug: Facter: fact "serialnumber" has resolved to "VMware-42 32 bd 50 81 d3 9c 27-b9 c1 54 51 37 2a 35 9e".[0m
+[0;36mDebug: Facter: fact "uuid" has resolved to "4232BD50-81D3-9C27-B9C1-5451372A359E".[0m
+[0;36mDebug: Facter: fact "chassisassettag" has resolved to "No Asset Tag".[0m
+[0;36mDebug: Facter: fact "chassistype" has resolved to "Other".[0m
+[0;36mDebug: Facter: fact "manufacturer" has resolved to "VMware, Inc.".[0m
+[0;36mDebug: Facter: fact "dmi" has resolved to {
+  bios => {
+    release_date => "04/14/2014",
+    vendor => "Phoenix Technologies LTD",
+    version => "6.00"
+  },
+  board => {
+    manufacturer => "Intel Corporation",
+    product => "440BX Desktop Reference Platform",
+    serial_number => "None"
+  },
+  chassis => {
+    asset_tag => "No Asset Tag",
+    type => "Other"
+  },
+  manufacturer => "VMware, Inc.",
+  product => {
+    name => "VMware Virtual Platform",
+    serial_number => "VMware-42 32 bd 50 81 d3 9c 27-b9 c1 54 51 37 2a 35 9e",
+    uuid => "4232BD50-81D3-9C27-B9C1-5451372A359E"
+  }
+}.[0m
+[0;36mDebug: Facter: executing command: /opt/puppetlabs/puppet/bin/virt-what[0m
+[0;36mDebug: Facter: vmware[0m
+[0;36mDebug: Facter: completed processing output: closing child pipes.[0m
+[0;36mDebug: Facter: process exited with status code 0.[0m
+[0;36mDebug: Facter: fact "is_virtual" has resolved to true.[0m
+[0;36mDebug: Facter: fact "virtual" has resolved to "vmware".[0m
+[0;36mDebug: Facter: EC2 facts are unavailable: not running under an EC2 instance.[0m
+[0;36mDebug: Facter: resolving GCE facts.[0m
+[0;36mDebug: Facter: not running under a GCE instance.[0m
+[0;36mDebug: Facter: resolving augeas facts.[0m
+[0;36mDebug: Facter: executing command: /opt/puppetlabs/puppet/bin/augparse --version[0m
+[0;36mDebug: Facter: augparse 1.4.0 <http://augeas.net/>[0m
+[0;36mDebug: Facter: completed processing output: closing child pipes.[0m
+[0;36mDebug: Facter: process exited with status code 0.[0m
+[0;36mDebug: Facter: fact "augeasversion" has resolved to "1.4.0".[0m
+[0;36mDebug: Facter: fact "augeas" has resolved to {
+  version => "1.4.0"
+}.[0m
+[0;36mDebug: Facter: resolving networking facts.[0m
+[0;36mDebug: Facter: hostname "epcau-srv-puppet" could not be resolved: hostname may not be externally resolvable.[0m
+[0;36mDebug: Facter: searching "/var/lib/dhclient" for dhclient lease files.[0m
+[0;36mDebug: Facter: searching "/var/lib/dhcp" for dhclient lease files.[0m
+[0;36mDebug: Facter: reading "/var/lib/dhcp/dhclient.leases" for dhclient lease information.[0m
+[0;36mDebug: Facter: reading "/var/lib/dhcp/dhclient.eth0.leases" for dhclient lease information.[0m
+[0;36mDebug: Facter: searching "/var/lib/dhcp3" for dhclient lease files.[0m
+[0;36mDebug: Facter: searching "/var/lib/NetworkManager" for dhclient lease files.[0m
+[0;36mDebug: Facter: searching "/var/db" for dhclient lease files.[0m
+[0;36mDebug: Facter: executing command: dhcpcd -U lo[0m
+[0;36mDebug: Facter: dhcpcd was not found on the PATH.[0m
+[0;36mDebug: Facter: fact "ipaddress_eth0" has resolved to "10.10.10.165".[0m
+[0;36mDebug: Facter: fact "ipaddress" has resolved to "10.10.10.165".[0m
+[0;36mDebug: Facter: fact "netmask_eth0" has resolved to "255.255.255.0".[0m
+[0;36mDebug: Facter: fact "netmask" has resolved to "255.255.255.0".[0m
+[0;36mDebug: Facter: fact "network_eth0" has resolved to "10.10.10.0".[0m
+[0;36mDebug: Facter: fact "network" has resolved to "10.10.10.0".[0m
+[0;36mDebug: Facter: fact "ipaddress6_eth0" has resolved to "fe80::250:56ff:feb2:e77f".[0m
+[0;36mDebug: Facter: fact "ipaddress6" has resolved to "fe80::250:56ff:feb2:e77f".[0m
+[0;36mDebug: Facter: fact "netmask6_eth0" has resolved to "ffff:ffff:ffff:ffff::".[0m
+[0;36mDebug: Facter: fact "netmask6" has resolved to "ffff:ffff:ffff:ffff::".[0m
+[0;36mDebug: Facter: fact "network6_eth0" has resolved to "fe80::".[0m
+[0;36mDebug: Facter: fact "network6" has resolved to "fe80::".[0m
+[0;36mDebug: Facter: fact "macaddress_eth0" has resolved to "00:50:56:b2:e7:7f".[0m
+[0;36mDebug: Facter: fact "macaddress" has resolved to "00:50:56:b2:e7:7f".[0m
+[0;36mDebug: Facter: fact "mtu_eth0" has resolved to 1500.[0m
+[0;36mDebug: Facter: fact "ipaddress_lo" has resolved to "127.0.0.1".[0m
+[0;36mDebug: Facter: fact "netmask_lo" has resolved to "255.0.0.0".[0m
+[0;36mDebug: Facter: fact "network_lo" has resolved to "127.0.0.0".[0m
+[0;36mDebug: Facter: fact "ipaddress6_lo" has resolved to "::1".[0m
+[0;36mDebug: Facter: fact "netmask6_lo" has resolved to "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff".[0m
+[0;36mDebug: Facter: fact "network6_lo" has resolved to "::1".[0m
+[0;36mDebug: Facter: fact "mtu_lo" has resolved to 65536.[0m
+[0;36mDebug: Facter: fact "hostname" has resolved to "epcau-srv-puppet".[0m
+[0;36mDebug: Facter: fact "domain" has resolved to "epochcapital.com.au".[0m
+[0;36mDebug: Facter: fact "fqdn" has resolved to "epcau-srv-puppet.epochcapital.com.au".[0m
+[0;36mDebug: Facter: fact "interfaces" has resolved to "eth0,lo".[0m
+[0;36mDebug: Facter: fact "dhcp_servers" has resolved to {
+  eth0 => "10.10.10.201",
+  system => "10.10.10.201"
+}.[0m
+[0;36mDebug: Facter: fact "networking" has resolved to {
+  dhcp => "10.10.10.201",
+  domain => "epochcapital.com.au",
+  fqdn => "epcau-srv-puppet.epochcapital.com.au",
+  hostname => "epcau-srv-puppet",
+  interfaces => {
+    eth0 => {
+      bindings => [
+        {
+          address => "10.10.10.165",
+          netmask => "255.255.255.0",
+          network => "10.10.10.0"
+        }
+      ],
+      bindings6 => [
+        {
+          address => "fe80::250:56ff:feb2:e77f",
+          netmask => "ffff:ffff:ffff:ffff::",
+          network => "fe80::"
+        }
+      ],
+      dhcp => "10.10.10.201",
+      ip => "10.10.10.165",
+      ip6 => "fe80::250:56ff:feb2:e77f",
+      mac => "00:50:56:b2:e7:7f",
+      mtu => 1500,
+      netmask => "255.255.255.0",
+      netmask6 => "ffff:ffff:ffff:ffff::",
+      network => "10.10.10.0",
+      network6 => "fe80::"
+    },
+    lo => {
+      bindings => [
+        {
+          address => "127.0.0.1",
+          netmask => "255.0.0.0",
+          network => "127.0.0.0"
+        }
+      ],
+      bindings6 => [
+        {
+          address => "::1",
+          netmask => "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+          network => "::1"
+        }
+      ],
+      ip => "127.0.0.1",
+      ip6 => "::1",
+      mtu => 65536,
+      netmask => "255.0.0.0",
+      netmask6 => "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+      network => "127.0.0.0",
+      network6 => "::1"
+    }
+  },
+  ip => "10.10.10.165",
+  ip6 => "fe80::250:56ff:feb2:e77f",
+  mac => "00:50:56:b2:e7:7f",
+  mtu => 1500,
+  netmask => "255.255.255.0",
+  netmask6 => "ffff:ffff:ffff:ffff::",
+  network => "10.10.10.0",
+  network6 => "fe80::",
+  primary => "eth0"
+}.[0m
+[0;36mDebug: Facter: resolving disk facts.[0m
+[0;36mDebug: Facter: fact "blockdevice_fd0_size" has resolved to 0.[0m
+[0;36mDebug: Facter: fact "blockdevice_sda_vendor" has resolved to "VMware".[0m
+[0;36mDebug: Facter: fact "blockdevice_sda_model" has resolved to "Virtual disk".[0m
+[0;36mDebug: Facter: fact "blockdevice_sda_size" has resolved to 214748364800.[0m
+[0;36mDebug: Facter: fact "blockdevice_sr0_vendor" has resolved to "NECVMWar".[0m
+[0;36mDebug: Facter: fact "blockdevice_sr0_model" has resolved to "VMware IDE CDR10".[0m
+[0;36mDebug: Facter: fact "blockdevice_sr0_size" has resolved to 1073741312.[0m
+[0;36mDebug: Facter: fact "blockdevices" has resolved to "fd0,sda,sr0".[0m
+[0;36mDebug: Facter: fact "disks" has resolved to {
+  fd0 => {
+    size => "0 bytes",
+    size_bytes => 0
+  },
+  sda => {
+    model => "Virtual disk",
+    size => "200.00 GiB",
+    size_bytes => 214748364800,
+    vendor => "VMware"
+  },
+  sr0 => {
+    model => "VMware IDE CDR10",
+    size => "1.00 GiB",
+    size_bytes => 1073741312,
+    vendor => "NECVMWar"
+  }
+}.[0m
+[0;36mDebug: Facter: resolving processor facts.[0m
+[0;36mDebug: Facter: executing command: /bin/uname -p[0m
+[0;36mDebug: Facter: x86_64[0m
+[0;36mDebug: Facter: process exited with status code 0.[0m
+[0;36mDebug: Facter: fact "hardwareisa" has resolved to "x86_64".[0m
+[0;36mDebug: Facter: fact "processorcount" has resolved to 4.[0m
+[0;36mDebug: Facter: fact "physicalprocessorcount" has resolved to 2.[0m
+[0;36mDebug: Facter: fact "processor0" has resolved to "Intel(R) Xeon(R) CPU E5-2407 0 @ 2.20GHz".[0m
+[0;36mDebug: Facter: fact "processor1" has resolved to "Intel(R) Xeon(R) CPU E5-2407 0 @ 2.20GHz".[0m
+[0;36mDebug: Facter: fact "processor2" has resolved to "Intel(R) Xeon(R) CPU E5-2407 0 @ 2.20GHz".[0m
+[0;36mDebug: Facter: fact "processor3" has resolved to "Intel(R) Xeon(R) CPU E5-2407 0 @ 2.20GHz".[0m
+[0;36mDebug: Facter: fact "processors" has resolved to {
+  count => 4,
+  isa => "x86_64",
+  models => [
+    "Intel(R) Xeon(R) CPU E5-2407 0 @ 2.20GHz",
+    "Intel(R) Xeon(R) CPU E5-2407 0 @ 2.20GHz",
+    "Intel(R) Xeon(R) CPU E5-2407 0 @ 2.20GHz",
+    "Intel(R) Xeon(R) CPU E5-2407 0 @ 2.20GHz"
+  ],
+  physicalcount => 2
+}.[0m
+[0;36mDebug: Facter: resolving uptime facts.[0m
+[0;36mDebug: Facter: fact "uptime_seconds" has resolved to 22138.[0m
+[0;36mDebug: Facter: fact "uptime_hours" has resolved to 6.[0m
+[0;36mDebug: Facter: fact "uptime_days" has resolved to 0.[0m
+[0;36mDebug: Facter: fact "uptime" has resolved to "6:08 hours".[0m
+[0;36mDebug: Facter: fact "system_uptime" has resolved to {
+  days => 0,
+  hours => 6,
+  seconds => 22138,
+  uptime => "6:08 hours"
+}.[0m
+[0;36mDebug: Facter: resolving ssh facts.[0m
+[0;36mDebug: Facter: fact "sshdsakey" has resolved to "AAAAB3NzaC1kc3MAAACBAK8kCuCOz9ovtz99N6cIPEQXThQkYsU2DDB9uSW9ndNe45o9zJmCSyDjzijNUKXjAqK2kl38Mbx1pbbd918v68oLqF3vsP5yjVwxlDuyA6ubihAczRcwNrH80iWk1tDJ70tCMgBdPTPkJpfQw0XFIT1C3WCyfKrgErjQVVMu6ISHAAAAFQDEwAv2ZmVNulbVDfPhp9cG7kCyCQAAAIB5uot6XtPigPtKM3RqZXjswQopPbs9yVd5PzhuY+NzT1wppHTwmocbiLTtyB6mHp9dLLe1QK89hmfF/klaybeBke0gaB017gphIpxPKICE1IhI1tILYdW0gpPRhhLF4Z7+61nZ8kq4E+ZZ/E2V0CIpa1tt8cGMDQGfm/x0zyOudAAAAIBQML5/h7t9z4ogOaScL0RRWLyCpgTdLitH5FOhmf1B2eE5a1PDXgn74Ne5GGkI7eeZeBAJeBi/iqMjA5VMSe58MuA9cI32zQW889pEDmjdKHu+DPKMLpdNE5BK48QcwHtUpcDnfBdnHVKPHU9Kg5EFuWcAWA6NSoPt/+Jk6Jag1Q==".[0m
+[0;36mDebug: Facter: fact "sshfp_dsa" has resolved to "SSHFP 2 1 b0e0c54cac62bc783f66dc55eb5c8a2086f049ec
+SSHFP 2 2 2d4502ca748e1b86e406fc7dc7617e29444883c0b3eff2ac6f62653abc432165".[0m
+[0;36mDebug: Facter: fact "sshrsakey" has resolved to "AAAAB3NzaC1yc2EAAAADAQABAAABAQC4VlhY6iSf8/jXboDyDiDLM4+454FIoL5iNODVGO5USrniolfucjHR44YhLvfEbz3NMZfvoiQUxGtxSOM3xSyBJA+kkQdW/2HVmKcFp1OU2avjej+eydcAod24DctSmv9kH2vebUgvwzrJ77Hgeg8NFE0SiDHgV7u3Pf3ARp/7guTbVtKeLg+x6KtK9V3I7X91Lku5GIBVFp/YBMFv9SfeBBmP1bybQyo6kpP7gkMuMuHYdZE5145iT6QyugbLIP7FEXxWczMKWpzzxM8T7X5jxDsXPew7JGw+2rLUW1VZAXVRMsCO//bqRzrbkFWxLbOJV/KcECHzgoDZcnxID3QZ".[0m
+[0;36mDebug: Facter: fact "sshfp_rsa" has resolved to "SSHFP 1 1 0d259d29ac5bc66a31776c1fa490dcf145b8f6e5
+SSHFP 1 2 6d52b41be4542ba212a6e1b4c1a13df2dd84d92bd904097e093765b5c1e2b43e".[0m
+[0;36mDebug: Facter: fact "sshecdsakey" has resolved to "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBP6ct+Z+gvy+p8lv74o4fd1DyE4W+rlFjOnKmKmvJ4/ZdcY+sFOa+g6+SV5nMuKyn6dpDySNQbkHmZqdSOwkcrM=".[0m
+[0;36mDebug: Facter: fact "sshfp_ecdsa" has resolved to "SSHFP 3 1 6e896c4e11e9554ecc14d8678789f0650d41b1ab
+SSHFP 3 2 c7716ef15d04025012bdb0d82ea42a09f57cd8d254612d3b6d4fc990020cf8ae".[0m
+[0;36mDebug: Facter: fact "sshed25519key" has resolved to "AAAAC3NzaC1lZDI1NTE5AAAAIOrn40GJGfj3jefEb1BRwPFqg3nmMbbk9ScnvrDRFzqV".[0m
+[0;36mDebug: Facter: fact "sshfp_ed25519" has resolved to "SSHFP 4 1 03b1a19f26c9141f740d6773d5db7e9f40271321
+SSHFP 4 2 dcb174f8ac29f32f4d64d724ec7d4d69e8b3a10bd4b3f6dff609d5404d903bab".[0m
+[0;36mDebug: Facter: fact "ssh" has resolved to {
+  dsa => {
+    fingerprints => {
+      sha1 => "SSHFP 2 1 b0e0c54cac62bc783f66dc55eb5c8a2086f049ec",
+      sha256 => "SSHFP 2 2 2d4502ca748e1b86e406fc7dc7617e29444883c0b3eff2ac6f62653abc432165"
+    },
+    key => "AAAAB3NzaC1kc3MAAACBAK8kCuCOz9ovtz99N6cIPEQXThQkYsU2DDB9uSW9ndNe45o9zJmCSyDjzijNUKXjAqK2kl38Mbx1pbbd918v68oLqF3vsP5yjVwxlDuyA6ubihAczRcwNrH80iWk1tDJ70tCMgBdPTPkJpfQw0XFIT1C3WCyfKrgErjQVVMu6ISHAAAAFQDEwAv2ZmVNulbVDfPhp9cG7kCyCQAAAIB5uot6XtPigPtKM3RqZXjswQopPbs9yVd5PzhuY+NzT1wppHTwmocbiLTtyB6mHp9dLLe1QK89hmfF/klaybeBke0gaB017gphIpxPKICE1IhI1tILYdW0gpPRhhLF4Z7+61nZ8kq4E+ZZ/E2V0CIpa1tt8cGMDQGfm/x0zyOudAAAAIBQML5/h7t9z4ogOaScL0RRWLyCpgTdLitH5FOhmf1B2eE5a1PDXgn74Ne5GGkI7eeZeBAJeBi/iqMjA5VMSe58MuA9cI32zQW889pEDmjdKHu+DPKMLpdNE5BK48QcwHtUpcDnfBdnHVKPHU9Kg5EFuWcAWA6NSoPt/+Jk6Jag1Q=="
+  },
+  ecdsa => {
+    fingerprints => {
+      sha1 => "SSHFP 3 1 6e896c4e11e9554ecc14d8678789f0650d41b1ab",
+      sha256 => "SSHFP 3 2 c7716ef15d04025012bdb0d82ea42a09f57cd8d254612d3b6d4fc990020cf8ae"
+    },
+    key => "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBP6ct+Z+gvy+p8lv74o4fd1DyE4W+rlFjOnKmKmvJ4/ZdcY+sFOa+g6+SV5nMuKyn6dpDySNQbkHmZqdSOwkcrM="
+  },
+  ed25519 => {
+    fingerprints => {
+      sha1 => "SSHFP 4 1 03b1a19f26c9141f740d6773d5db7e9f40271321",
+      sha256 => "SSHFP 4 2 dcb174f8ac29f32f4d64d724ec7d4d69e8b3a10bd4b3f6dff609d5404d903bab"
+    },
+    key => "AAAAC3NzaC1lZDI1NTE5AAAAIOrn40GJGfj3jefEb1BRwPFqg3nmMbbk9ScnvrDRFzqV"
+  },
+  rsa => {
+    fingerprints => {
+      sha1 => "SSHFP 1 1 0d259d29ac5bc66a31776c1fa490dcf145b8f6e5",
+      sha256 => "SSHFP 1 2 6d52b41be4542ba212a6e1b4c1a13df2dd84d92bd904097e093765b5c1e2b43e"
+    },
+    key => "AAAAB3NzaC1yc2EAAAADAQABAAABAQC4VlhY6iSf8/jXboDyDiDLM4+454FIoL5iNODVGO5USrniolfucjHR44YhLvfEbz3NMZfvoiQUxGtxSOM3xSyBJA+kkQdW/2HVmKcFp1OU2avjej+eydcAod24DctSmv9kH2vebUgvwzrJ77Hgeg8NFE0SiDHgV7u3Pf3ARp/7guTbVtKeLg+x6KtK9V3I7X91Lku5GIBVFp/YBMFv9SfeBBmP1bybQyo6kpP7gkMuMuHYdZE5145iT6QyugbLIP7FEXxWczMKWpzzxM8T7X5jxDsXPew7JGw+2rLUW1VZAXVRMsCO//bqRzrbkFWxLbOJV/KcECHzgoDZcnxID3QZ"
+  }
+}.[0m
+[0;36mDebug: Facter: resolving id facts.[0m
+[0;36mDebug: Facter: fact "id" has resolved to "root".[0m
+[0;36mDebug: Facter: fact "gid" has resolved to "root".[0m
+[0;36mDebug: Facter: fact "identity" has resolved to {
+  gid => 0,
+  group => "root",
+  uid => 0,
+  user => "root"
+}.[0m
+[0;36mDebug: Facter: resolving timezone facts.[0m
+[0;36mDebug: Facter: fact "timezone" has resolved to "AEDT".[0m
+[0;36mDebug: Facter: resolving file system facts.[0m
+[0;36mDebug: Facter: blkid_get_dev failed: partition attributes are unavailable for '/dev/sda1'.[0m
+[0;36mDebug: Facter: fact "mountpoints" has resolved to {
+  / => {
+    available => "45.12 GiB",
+    available_bytes => 48444268544,
+    capacity => "3.11%",
+    device => "/dev/sda5",
+    filesystem => "btrfs",
+    options => [
+      "rw",
+      "subvol=@"
+    ],
+    size => "46.57 GiB",
+    size_bytes => 49999249408,
+    used => "1.45 GiB",
+    used_bytes => 1554980864
+  },
+  /home => {
+    available => "26.39 GiB",
+    available_bytes => 28340510720,
+    capacity => "5.53%",
+    device => "/dev/sda6",
+    filesystem => "btrfs",
+    options => [
+      "rw",
+      "subvol=@home"
+    ],
+    size => "27.94 GiB",
+    size_bytes => 29998710784,
+    used => "1.54 GiB",
+    used_bytes => 1658200064
+  },
+  /opt => {
+    available => "90.06 GiB",
+    available_bytes => 96703913984,
+    capacity => "3.29%",
+    device => "/dev/sda8",
+    filesystem => "btrfs",
+    options => [
+      "rw"
+    ],
+    size => "93.13 GiB",
+    size_bytes => 99998498816,
+    used => "3.07 GiB",
+    used_bytes => 3294584832
+  },
+  /var => {
+    available => "17.75 GiB",
+    available_bytes => 19061878784,
+    capacity => "4.68%",
+    device => "/dev/sda7",
+    filesystem => "btrfs",
+    options => [
+      "rw"
+    ],
+    size => "18.63 GiB",
+    size_bytes => 19998441472,
+    used => "893.18 MiB",
+    used_bytes => 936562688
+  }
+}.[0m
+[0;36mDebug: Facter: fact "filesystems" has resolved to "btrfs,ext2,ext3,ext4,vfat".[0m
+[0;36mDebug: Facter: fact "partitions" has resolved to {
+  /dev/sda1 => {
+    size => "1.00 KiB",
+    size_bytes => 1024
+  },
+  /dev/sda5 => {
+    filesystem => "btrfs",
+    mount => "/",
+    size => "46.57 GiB",
+    size_bytes => 49999249408,
+    uuid => "6c957dcb-bf37-4525-bfe4-ee5c9261027e"
+  },
+  /dev/sda6 => {
+    filesystem => "btrfs",
+    mount => "/home",
+    size => "27.94 GiB",
+    size_bytes => 29998710784,
+    uuid => "610fa31c-9e2c-4c30-b8ae-990c7f3cde06"
+  },
+  /dev/sda7 => {
+    filesystem => "btrfs",
+    mount => "/var",
+    size => "18.63 GiB",
+    size_bytes => 19998441472,
+    uuid => "f50dda5b-3281-45c6-b86d-0d28f4a311c1"
+  },
+  /dev/sda8 => {
+    filesystem => "btrfs",
+    mount => "/opt",
+    size => "93.13 GiB",
+    size_bytes => 99998498816,
+    uuid => "02e4dec7-a51f-4c8b-a111-fb48df4157ed"
+  },
+  /dev/sda9 => {
+    filesystem => "swap",
+    size => "13.73 GiB",
+    size_bytes => 14747172864,
+    uuid => "88428b09-f7b5-4903-80d2-24c28e582d5c"
+  }
+}.[0m
+[0;36mDebug: Facter: resolving memory facts.[0m
+[0;36mDebug: Facter: fact "memoryfree" has resolved to "2.97 GiB".[0m
+[0;36mDebug: Facter: fact "memoryfree_mb" has resolved to 3038.34.[0m
+[0;36mDebug: Facter: fact "memorysize" has resolved to "5.83 GiB".[0m
+[0;36mDebug: Facter: fact "memorysize_mb" has resolved to 5969.12.[0m
+[0;36mDebug: Facter: fact "swapfree" has resolved to "13.73 GiB".[0m
+[0;36mDebug: Facter: fact "swapfree_mb" has resolved to 14064.[0m
+[0;36mDebug: Facter: fact "swapsize" has resolved to "13.73 GiB".[0m
+[0;36mDebug: Facter: fact "swapsize_mb" has resolved to 14064.[0m
+[0;36mDebug: Facter: fact "memory" has resolved to {
+  swap => {
+    available => "13.73 GiB",
+    available_bytes => 14747168768,
+    capacity => "0%",
+    total => "13.73 GiB",
+    total_bytes => 14747168768,
+    used => "0 bytes",
+    used_bytes => 0
+  },
+  system => {
+    available => "2.97 GiB",
+    available_bytes => 3185926144,
+    capacity => "49.10%",
+    total => "5.83 GiB",
+    total_bytes => 6259081216,
+    used => "2.86 GiB",
+    used_bytes => 3073155072
+  }
+}.[0m
+[0;36mDebug: Facter: resolving load_average facts.[0m
+[0;36mDebug: Facter: fact "load_averages" has resolved to {
+  15m => 0.19,
+  1m => 0.03,
+  5m => 0.18
+}.[0m
+[0;36mDebug: Facter: resolving Xen facts.[0m
+[0;36mDebug: Evicting cache entry for environment 'test'[0m
+[0;36mDebug: Caching environment 'test' (ttl = 0 sec)[0m
+[mNotice: Compiled catalog for epcau-srv-puppet.epochcapital.com.au in environment test in 0.74 seconds[0m
+[0;36mDebug: Creating default schedules[0m
+[0;36mDebug: Loaded state in 0.17 seconds[0m
+[0;36mDebug: Loaded state in 0.16 seconds[0m
+[0;32mInfo: Applying configuration version '1447130260'[0m
+[0;36mDebug: Finishing transaction 19232700[0m
+[0;36mDebug: Storing state[0m
+[0;36mDebug: Stored state in 0.11 seconds[0m
+[mNotice: Applied catalog in 0.28 seconds[0m
+[0;36mDebug: Applying settings catalog for sections reporting, metrics[0m
+[0;36mDebug: Finishing transaction 30006100[0m
+[0;36mDebug: Received report to process from epcau-srv-puppet.epochcapital.com.au[0m
+[0;36mDebug: Evicting cache entry for environment 'test'[0m
+[0;36mDebug: Caching environment 'test' (ttl = 0 sec)[0m
+[0;36mDebug: Processing report from epcau-srv-puppet.epochcapital.com.au with processor Puppet::Reports::Store[0m
