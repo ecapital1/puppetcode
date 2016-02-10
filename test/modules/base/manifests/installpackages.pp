@@ -1,8 +1,8 @@
 class base::installpackages {
     notice ("install package running on $::osfamily and on $::operatingsystemrelease")
     $packages = hiera_array('ospackages')
-    each($packages) |$packages| {
-      package { $packages:
+    $packages.each |$package| {
+      package { $package:
         ensure => installed,
       }
     }
