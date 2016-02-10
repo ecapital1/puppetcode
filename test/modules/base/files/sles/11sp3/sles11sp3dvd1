@@ -1,0 +1,8 @@
+[SLES11SP3DVD1.repo]
+name=SUSE Linux Enterprise Server 11 SP3
+enabled=1
+autorefresh=1
+baseurl=ftp://10.10.10.81/SLES-11-SP3/DVD1
+path=/
+type=yast2
+keeppackages=0
