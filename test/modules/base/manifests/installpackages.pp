@@ -4,5 +4,5 @@ class base::installpackages {
     #package { $package:
     #  ensure => installed,
     #}
-  }
+  #}
 }
