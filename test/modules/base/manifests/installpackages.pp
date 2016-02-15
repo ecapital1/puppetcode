@@ -1,6 +1,6 @@
 class base::installpackages {
   $packages = hiera_array('ospackages')
-  $packages.each |String $packages|{
+  $packages.each |$index, $packages|{
     package { $packages:
       ensure => installed,
     }
