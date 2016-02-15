@@ -1,11 +1,13 @@
 class base::installpackages {
     notice ("install package running on $::osfamily and on $::operatingsystemrelease")
-    ['a', 'b', 'c'].each{#hiera_array('ospackages')
-      notice "working"
+    $packages = ['a', 'b', 'c'];#hiera_array('ospackages')
+    notice $packages;
+    #$packages.each {
+    #  notice $package
       #package { $package:
       #  ensure => installed,
       #}
-    }
+    #}
     file {"/var/run/bacula/":
       ensure => 'directory',
     }
