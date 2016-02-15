@@ -2,9 +2,9 @@ class base::repos {
 	case $::osfamily {
 	'Suse': {
 		case $::operatingsystemrelease {
-			'11.3', '12.0': {
+			'11.3', '12.1': {
 						zypprepo { 'SLES12DVD1':
-							baseurl					=> 'ftp://10.10.10.81/SLES-12/DVD1',
+							baseurl					=> 'ftp://10.10.10.81/SLES-12-SP1/DVD1',
 							enabled					=> 1,
 							autorefresh			=> 1,
 							name						=> 'SLES12DVD1',
@@ -13,7 +13,7 @@ class base::repos {
 							keeppackages		=> 0,
 						}
 						zypprepo { 'SLES12DVD2':
-							baseurl         => 'ftp://10.10.10.81/SLES-12/DVD2',
+							baseurl         => 'ftp://10.10.10.81/SLES-12-SP1/DVD2',
 							enabled         => 1,
 							autorefresh     => 1,
 							name            => 'SLES12DVD2',
@@ -22,7 +22,7 @@ class base::repos {
 							keeppackages    => 0,
 						}
 						zypprepo { 'SLES12SDKDVD1':
-							baseurl					=> 'ftp://10.10.10.81/SLES-12-SDK/DVD1',
+							baseurl					=> 'ftp://10.10.10.81/SLES-12-SDK-SP1/DVD1',
 							enabled					=> 1,
 							autorefresh			=> 1,
 							name						=> 'SLES12SDKDVD1',
@@ -31,7 +31,7 @@ class base::repos {
 							keeppackages		=> 0,
 						}
 						zypprepo { 'SLES12SDKDVD2':
-							baseurl         => 'ftp://10.10.10.81/SLES-12-SDK/DVD2',
+							baseurl         => 'ftp://10.10.10.81/SLES-12-SDK-SP1/DVD2',
 							enabled         => 1,
 							autorefresh     => 1,
 							name            => 'SLES12SDKDVD2',
