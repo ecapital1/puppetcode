@@ -1,6 +1,6 @@
 class base::installpackages {
-  $data = ["routers", "servers", "workstations"]
-  $data.each |$item| {
+  #$data = ["routers", "servers", "workstations"]
+  ["routers", "servers", "workstations"].each |$item| {
     notify { $item:
       message => $item
     }
