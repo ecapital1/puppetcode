@@ -12,4 +12,12 @@ class base {
 	include base::ssh
 	include base::sssd
 	#include base::users
+	case $hostname {
+		'epcau-srv-research': {
+			include base::mounts
+		}
+		default: {
+			notice("only for selected servers")
+		}
+	}
 }
