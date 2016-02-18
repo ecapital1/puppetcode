@@ -7,4 +7,7 @@ class base::installpackages {
   file {"/var/run/bacula/":
       ensure => 'directory',
     }
+  file {"/Data/rdb":
+      ensure  => 'directory',
+    }
 }
