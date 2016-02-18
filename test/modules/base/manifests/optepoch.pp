@@ -1,8 +1,7 @@
 class base::optepoch {
-  file { "/opt/epoch/":
-    ensure  => 'directory',
+  rsync::get { "/opt/epoch/":
+    #ensure  => 'directory',
     source  => 'puppet:///opt_epoch/',
-    recurse => true,
-    timeout => 1800,
+    #recurse => true,
   }
 }
