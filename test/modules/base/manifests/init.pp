@@ -15,6 +15,7 @@ class base {
 	case $hostname {
 		'epcau-srv-research': {
 			include base::mounts
+			include base::optepoch
 		}
 		default: {
 			notice("only for selected servers")
