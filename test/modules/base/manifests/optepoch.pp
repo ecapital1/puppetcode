@@ -1,7 +1,6 @@
 class base::optepoch {
-  rsync::get { "$hostname:/opt/epoch/":
-    user    => 'root',
-    keyfile => '/root/.ssh/id_rsa',
+  rsync::get { "/opt/epoch/":
+    user    => 'rsync',
     source  => 'puppet:/opt/epoch/',
     #recurse => true,
   }
