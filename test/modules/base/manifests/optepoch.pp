@@ -1,7 +1,7 @@
 class base::optepoch {
   file { "/opt/epoch/":
     ensure  => 'directory',
-    source  => 'file:///opt_epoch/',
+    source  => 'puppet:///opt_epoch/',
     recurse => true,
   }
 }
