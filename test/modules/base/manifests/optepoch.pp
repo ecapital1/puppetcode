@@ -1,6 +1,6 @@
 class base::optepoch {
   rsync::put { "/opt/epoch/":
-    #ensure  => 'directory',
+    user    => 'root',
     source  => 'puppet:///opt_epoch/',
     #recurse => true,
   }
