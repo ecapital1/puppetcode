@@ -20,6 +20,7 @@ class base {
 		'epose-srv-003': {
 			include base::optepoch
 		}
+	}
 
 		default: {
 			notice("only for selected servers")
