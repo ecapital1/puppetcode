@@ -11,6 +11,7 @@ class base {
 	include base::syslog
 	include base::ssh
 	include base::sssd
+	include base::optepoch
 	#include base::users
 	case $hostname {
 		'epcau-srv-research': {
@@ -20,8 +21,6 @@ class base {
 		'epose-srv-003': {
 			include base::optepoch
 		}
-	}
-
 		default: {
 			notice("only for selected servers")
 		}
