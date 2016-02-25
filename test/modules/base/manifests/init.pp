@@ -17,6 +17,10 @@ class base {
 			include base::mounts
 			include base::optepoch
 		}
+		'epose-srv-003': {
+			include base::optepoch
+		}
+
 		default: {
 			notice("only for selected servers")
 		}
