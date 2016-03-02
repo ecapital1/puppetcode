@@ -30,6 +30,9 @@ class base {
 		'epcau-srv-research': {
 			include base::mounts
 		}
+		'epose-srv-003': {
+			include base::pam
+		}
 		default: {
 			notice("only for selected servers")
 		}
