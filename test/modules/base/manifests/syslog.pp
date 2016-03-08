@@ -1,7 +1,4 @@
 class base::syslog {
-  class { '::rsyslog::params':
-    perm_file => '0644',
-  }
   class { '::rsyslog::client':
     remote_servers => [{
       host => '10.10.10.5',
