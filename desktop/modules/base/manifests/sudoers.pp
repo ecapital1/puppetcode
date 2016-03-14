@@ -60,7 +60,7 @@ class base::sudoers {
   }
   sudo::conf { 'developer':
     priority => 11,
-    content  => "%developer ALL = (ALL) NOPASSWD:/bin/su - epoch"
+    content  => "%developer ALL = (ALL) NOPASSWD:/bin/su -"
   }
   sudo::conf { 'fcs':
     priority => 8,
