@@ -25,12 +25,15 @@ class base::sssd {
         },
       }
     }
-    file { "/usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf":
-      ensure  => present,
-      owner   => 'root',
-      group   => 'root',
-      mode    => '0644',
-      content => file("base/50-ubuntu.conf"),
-      #notify  => Exec['sysctl_refresh'],
+    case $operatingsystem {
+      'Ubuntu': {
+        file { "/usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf":
+          ensure  => present,
+          owner   => 'root',
+          group   => 'root',
+          mode    => '0644',
+          content => file("base/50-ubuntu.conf"),
       }
+    }
+  }
   }
