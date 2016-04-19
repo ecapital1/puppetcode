@@ -1,5 +1,5 @@
 class base {
-	if $virtual {
+	if $is_virtual {
 		notice("This is a VWMARE Host");
 	} else {
 	case $operatingsystem {
@@ -28,7 +28,7 @@ class base {
 			include base::sssd
 		}
 	}
-
+}
 	case $hostname {
 		'epcau-srv-research': {
 			include base::mounts
@@ -36,6 +36,5 @@ class base {
 		default: {
 			notice("only for selected servers")
 		}
-	}
 	}
 }
