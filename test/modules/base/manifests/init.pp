@@ -1,6 +1,7 @@
 class base {
 	if $is_virtual {
 		notice("This is a VWMARE Host")
+		include base::ntp
 	} else {
 	case $operatingsystem {
 		'SLES': {
