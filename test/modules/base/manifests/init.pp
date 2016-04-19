@@ -3,6 +3,8 @@ class base {
 		notice("This is a VWMARE Host")
 		include base::ntp
 		include base::sssd
+		include base::sudoers
+		include base::dns
 	} else {
 	case $operatingsystem {
 		'SLES': {
