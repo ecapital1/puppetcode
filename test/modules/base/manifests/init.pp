@@ -1,4 +1,7 @@
 class base {
+	if $virtual {
+		notice("This is a VWMARE Host")
+	} else {
 	case $operatingsystem {
 		'SLES': {
 			include base::repos
@@ -33,5 +36,6 @@ class base {
 		default: {
 			notice("only for selected servers")
 		}
+	}
 	}
 }
