@@ -1,6 +1,6 @@
 class base {
 	if $is_virtual {
-		notice("This is a VWMARE Host");
+		notice("This is a VWMARE Host")
 	} else {
 	case $operatingsystem {
 		'SLES': {
