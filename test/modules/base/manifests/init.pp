@@ -5,6 +5,8 @@ class base {
 		include base::sssd
 		include base::sudoers
 		include base::dns
+		include base::sysctl
+		include base::ssh
 	} else {
 	case $operatingsystem {
 		'SLES': {
