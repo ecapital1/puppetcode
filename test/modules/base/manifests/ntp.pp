@@ -1,6 +1,4 @@
 class base::ntp {
-	notify { $::role: }
-	notify { $::site: }
 	class { '::ntp':
 		servers => [ hiera('ntplocation') ],
 		iburst_enable => true,
