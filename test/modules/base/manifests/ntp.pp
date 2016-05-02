@@ -4,5 +4,6 @@ class base::ntp {
 		iburst_enable => true,
 		minpoll => '4',
 		maxpoll => '4',
+		notify {$::site: }
 	}
 }
