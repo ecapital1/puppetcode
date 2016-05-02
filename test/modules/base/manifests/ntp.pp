@@ -1,4 +1,5 @@
 class base::ntp {
+	notify { $::role: }
 	notify { $::site: }
 	class { '::ntp':
 		servers => [ hiera('ntp') ],
