@@ -1,5 +1,5 @@
 class base::ntp {
-	#notify { $::site: }
+	notify { $::site: }
 	class { '::ntp':
 		servers => [ hiera('ntp') ],
 		iburst_enable => true,
