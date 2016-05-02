@@ -1,6 +1,6 @@
 class base::ntp {
 	class { '::ntp':
-		servers => [ hiera('ntplocation.1') ],
+		servers => [ hiera('ntplocation') ],
 		iburst_enable => true,
 		minpoll => '4',
 		maxpoll => '4',
